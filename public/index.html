@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFEST</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- AOS (Animation) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        .slider-container {
+            perspective: 1000px;
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 300px;
+            overflow: hidden;
+            /* Mengubah overflow menjadi hidden */
+            display: flex;
+            justify-content: center;
+            /* Mengatur slider ke tengah */
+            padding-left: 2%;
+            /* Anda bisa menyesuaikan nilai ini jika diperlukan */
+        }
+
+        .slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            position: relative;
+            width: calc(100% - 100px);
+            /* Menyesuaikan lebar slider untuk menghindari overflow */
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            flex: 0 0 auto;
+            width: 250px;
+            height: 250px;
+            background: #a3e635;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            position: absolute;
+        }
+
+        .slider-button {
+            position: absolute;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+            z-index: 5;
+        }
+
+        .slider-button:hover {
+            background: #f0f0f0;
+        }
+
+        .slider-button.left {
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+        }
+
+        .slider-button.right {
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                width: 200px;
+                height: 200px;
+                font-size: 16px;
+            }
+
+            .slider-button {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                width: 150px;
+                height: 150px;
+            }
+
+            .slider-button {
+                width: 25px;
+                height: 25px;
+            }
+
+            .slider-button.left {
+                left: 5px;
+            }
+
+            .slider-button.right {
+                right: 5px;
+            }
+        }
+    </style>
+</head>
+
+<!-- Start - Slide 1 & Navbar -->
+<section class="w-full h-full lg:h-screen bg-cover bg-center" style="background-image: url('./../img/bg/1.svg')">
+    <div>
+        <div class="absolute -left-16 mt-32 scale-x-[-1]">
+            <div data-aos="fade-left" data-aos-duration="2000">
+                <img src="./../img/element/awan.svg" alt="awan" class="w-[250px] lg:w-[700px]" />
+            </div>
+        </div>
+        <div class="absolute right-0 mt-64 lg:mt-52" data-aos="fade-down" data-aos-duration="2000">
+            <img src="./../img/element/awan.svg" alt="awan" class="w-[150px] lg:w-[500px]" />
+        </div>
+    </div>
+    <!-- Start - Navbar -->
+
+    <!-- Start - Mobile -->
+    <div class="w-full h-20 lg:hidden relative">
+        <div class="h-full flex items-center font-quantico">
+            <div class="mx-5 flex w-full items-center">
+                <a href="/src/index.html">
+                    <div class="flex items-center space-x-5">
+                        <img src="./../img/element/Logo IFEST.svg" alt="" class="h-6" />
+                        <span class="">IFEST #13</span>
+                    </div>
+                </a>
+                <div class="flex items-center lg:hidden ml-auto z-20">
+                    <button id="hamburger-btn"
+                        class="bg-white p-3 rounded-full focus:outline-none shadow-xl border border-gray-300">
+                        <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12h18M3 6h18M3 18h18"></path>
+                        </svg>
+                        <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black hidden"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu"
+        class="z-10 font-quantico hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+        <div class="mt-16 p-5 space-y-4">
+            <div class="text-black hover:bg-gray-200 p-2 rounded flex items-center" id="kompetisi-btn-mobile"
+                role="button">
+                KOMPETISI
+                <svg id="dropdown-arrow-mobile" xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-2 transform transition-transform duration-200" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <text x="5" y="15" id="arrow-text-mobile">v</text>
+                </svg>
+            </div>
+            <ul id="kompetisi-dropdown-mobile" class="hidden space-y-2 ml-5">
+                <li>
+                    <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Mobile UI/UX Competition
+                        (MUC)</a>
+                </li>
+                <li>
+                    <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Web Development Competition
+                        (WDC)</a>
+                </li>
+                <li>
+                    <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Capture the Flag (CTF)</a>
+                </li>
+            </ul>
+            <a href="#semnas" class="block text-black hover:bg-gray-200 p-2 rounded">SEMINAR NASIONAL</a>
+            <a href="#galeri" class="block text-black hover:bg-gray-200 p-2 rounded">GALERI</a>
+            <a href="#partnership" class="block text-black hover:bg-gray-200 p-2 rounded">PARTNERSHIP</a>
+        </div>
+    </div>
+    <!-- End - Mobile -->
+
+    <!-- Start - Desktop -->
+    <div class="w-full h-20 hidden lg:block">
+        <div class="mx-10 bg-white h-full rounded-b-[35px] flex items-center font-quantico">
+            <div class="mx-10 flex w-full">
+                <a href="index.html">
+                    <div class="flex items-center space-x-5">
+                        <img src="./../img/element/Logo IFEST.svg" alt="" class="h-6" />
+                        <span class="">IFEST #13</span>
+                    </div>
+                </a>
+                <div class="ml-auto flex items-center gap-16">
+                    <div class="relative">
+                        <button id="kompetisi-btn-desktop" class="focus:outline-none flex items-center">
+                            KOMPETISI
+                            <svg id="dropdown-arrow-desktop" xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 ml-2 transform transition-transform duration-200" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <text x="5" y="15" id="arrow-text-desktop">v</text>
+                            </svg>
+                        </button>
+                        <div id="kompetisi-dropdown-desktop"
+                            class="absolute z-20 hidden bg-white shadow-lg rounded-md p-4 mt-2 left-0 w-64 border border-gray-300">
+                            <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Mobile UI/UX Competition
+                                (MUC)</a>
+                            <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Web Development
+                                Competition (WDC)</a>
+                            <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Capture the Flag
+                                (CTF)</a>
+                        </div>
+                    </div>
+                    <a href="#semnas">SEMINAR NASIONAL</a>
+                    <a href="#galeri">GALERI</a>
+                    <a href="#partnership">PARTNERSHIP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End - Desktop -->
+
+    <!-- End - Navbar -->
+
+    <!-- Start Slide 1 - Information -->
+    <div class="text-center items-center justify-center flex flex-col relative z-0 mt-20 mb-8 lg:mt-20">
+        <img src="./../img/element/CTF.svg" alt="" class="mt-5 mb-2 w-20 lg:w-max" data-aos="flip-left"
+            data-aos-duration="1000" />
+        <h1 class="font-jersey text-white text-6xl lg:text-7xl" data-aos="fade-up" data-aos-duration="2000">
+            Capture The Flag
+        </h1>
+    </div>
+
+    <div class="w-full flex justify-center gap-2 font-roboto mt-3 px-4">
+        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right"
+            data-aos-duration="2000">
+            <h1 class="text-white text-xs lg:text-lg text-center">Rp. 100.000</h1>
+        </div>
+        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-up"
+            data-aos-duration="2000">
+            <h1 class="text-white text-xs lg:text-lg text-center">
+                SMA / Sederajat
+            </h1>
+        </div>
+        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-left"
+            data-aos-duration="2000">
+            <h1 class="text-white text-xs lg:text-lg text-center">
+                Max. 3 orang
+            </h1>
+        </div>
+    </div>
+
+    <h1 class="text-center text-white mx-5 text-sm lg:text-base lg:mx-32 mt-5 font-inter" data-aos="fade-up"
+        data-aos-duration="2000">
+        Innovative Informatics Contest (I2C) adalah sebuah sebuah lomba di mana siswa siswi SMA/K sederajat dari seluruh
+        Indonesia yang tergabung dalam satu tim, akan berkompetisi untuk merancang berbagai ide inovatif produk digital
+        yang dapat menyelesaikan suatu
+        masalah. I2C akan diadakan dalam bentuk serangkaian acara.
+    </h1>
+
+    <div class="flex justify-center items-center mx-5 lg:mx-10 mt-5">
+        <img src="./../img/element/Bintang.svg" class="w-10 lg:w-20" alt="" data-aos="flip-left"
+            data-aos-duration="2000" />
+        <h1 class="text-white text-center font-jersey mt-2 text-4xl lg:text-5xl mx-2" data-aos="zoom-out"
+            data-aos-duration="2000">
+            ABOUT CAPTURE THE FLAG
+        </h1>
+        <img src="./../img/element/Bintang.svg" class="w-10 lg:w-20" alt="" data-aos="flip-right"
+            data-aos-duration="2000" />
+    </div>
+    <h1 class="text-center text-white mx-5 text-sm lg:text-base lg:mx-36 mt-5 font-inter" data-aos="zoom-in"
+        data-aos-duration="2000">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione exercitationem harum nesciunt veritatis ea
+        natus ipsam, vel quam cupiditate eos repellat, quia neque iusto minus molestias impedit reprehenderit culpa
+        reiciendis porro modi debitis non.
+        Voluptate cupiditate ullam, ipsam doloremque quod ad unde soluta! Maxime cumque laudantium, ratione iure labore
+        quisquam hic possimus, saepe eligendi dignissimos error! Commodi nobis minima ex unde, aperiam ut vero,
+        reiciendis accusamus similique
+        alias atque quaerat modi officia. Nisi, provident! Minima beatae atque, placeat harum voluptatum nemo porro eos
+        maiores vero illum, ducimus totam eaque ipsam odio dignissimos eum? Iure alias corporis laborum aut vitae.
+        Consequatur?
+    </h1>
+</section>
+<!-- End Slide 1 - Information -->
+<!-- End - Slide 1 -->
+
+<!-- -- Start Slide 2 - Information (Slide Card) -->
+<section class="w-full h-full bg-cover bg-center" style="background-image: url('./../img/bg1/2.svg')">
+    <div>
+        <div class="absolute -left-1 mt-2 lg:mt-32 scale-x-[-1] ml-10">
+            <img src="./../img/element/Bintang Kanan.svg" alt="awan" class="w-[100px] lg:w-[180px]" data-aos="flip-left"
+                data-aos-duration="2000" />
+        </div>
+        <div class="absolute right-0 mt-10 lg:mt-32 mr-10">
+            <img src="./../img/element/Bintang Kanan.svg" alt="awan" class="w-[100px] lg:w-[180px]"
+                data-aos="flip-right" data-aos-duration="2000" />
+        </div>
+    </div>
+    <div class="flex justify-center items-center mx-5 lg:mx-10 pt-32" data-aos="fade-down" data-aos-duration="2000">
+        <img src="./../img/element/Bintang.svg" class="w-10 lg:w-20" alt="" />
+        <div>
+            <h1 class="text-center text-white mt-5 text-xs font-khdam">
+                IFEST #13 : HEROES OF INNOVATION
+            </h1>
+            <h1 class="text-white text-center font-jersey text-4xl lg:text-5xl mx-2 mt-3">
+                CAPTURE THE FLAG
+            </h1>
+        </div>
+        <img src="./../img/element/Bintang.svg" class="w-10 lg:w-20" alt="" />
+    </div>
+    <h1 class="text-center text-white mx-5 text-sm lg:text-base lg:mx-36 mt-5 font-inter" data-aos="fade-up"
+        data-aos-duration="2000">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eligendi eum in impedit veniam alias tenetur
+        tempore deserunt fuga iste optio molestiae quibusdam cumque, odio dicta amet. Molestiae vel illo quos distinctio
+        velit eaque nam voluptas harum
+        consequuntur quibusdam molestias ut tempore a cumque, ad assumenda officia vitae autem? Itaque quidem quaerat
+        voluptatem quo, nulla unde eum! Libero odio assumenda quis optio. Molestiae pariatur aliquam, deleniti magni sit
+        ullam voluptas eius
+        voluptatum debitis, dolore ipsum numquam error delectus voluptatem qui culpa. Voluptatum sequi iusto odit
+        voluptas, culpa possimus, unde non ut accusamus eligendi, dicta quasi commodi modi adipisci corrupti nobis!
+    </h1>
+
+    <!-- Slider Container -->
+    <div class="flex justify-center items-center min-h-screen -mt-44">
+        <div class="slider-container" data-aos="fade-up" data-aos-duration="2000">
+            <!-- Adjust negative margin here -->
+            <div id="slider" class="slider">
+                <div class="slide" data-index="0">1</div>
+                <div class="slide" data-index="1">2</div>
+                <div class="slide" data-index="2">3</div>
+                <div class="slide" data-index="3">4</div>
+                <div class="slide" data-index="4">5</div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="slider-button left" onclick="moveSlider(-1)">
+                &larr;
+            </button>
+            <button class="slider-button right" onclick="moveSlider(1)">
+                &rarr;
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 2;
+
+    const SLIDE_DISTANCE = 200; // Adjust slide distance for responsiveness
+
+    function updateSlider() {
+        const totalSlides = slides.length;
+
+        slides.forEach((slide, index) => {
+            const diff = (index - currentIndex + totalSlides) % totalSlides;
+
+            if (diff === 0) {
+                slide.style.transform = 'translateX(0px) scale(1)';
+                slide.style.opacity = '1';
+                slide.style.zIndex = '2';
+            } else if (diff === 1 || diff === totalSlides - 1) {
+                slide.style.transform = `translateX(${diff === 1 ? SLIDE_DISTANCE : -SLIDE_DISTANCE}px) scale(0.9)`;
+                slide.style.opacity = '0.9';
+                slide.style.zIndex = '1';
+            } else {
+                slide.style.transform = `translateX(${diff === 2 ? SLIDE_DISTANCE * 2 : -SLIDE_DISTANCE * 2}px) scale(0.8)`;
+                slide.style.opacity = '0.7';
+                slide.style.zIndex = '0';
+            }
+        });
+    }
+
+    function moveSlider(direction) {
+        const totalSlides = slides.length;
+
+        currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+
+        updateSlider();
+    }
+
+    updateSlider();
+</script>
+<div>
+    <div class="absolute -left-16 -mt-48 lg:-mt-56 scale-x-[-1]" data-aos="fade-right" data-aos-duration="2000">
+        <img src="./../img/element/Awan2.svg" alt="awan" class="w-[270px] lg:w-[600px]" />
+    </div>
+    <div class="absolute right-0 -mt-80 lg:-mt-56 " data-aos="fade-right" data-aos-duration="2000">
+        <img src="./../img/element/Awan2.svg" alt="awan" class="w-[280px] lg:w-[500px]" />
+    </div>
+</div>
+</div>
+<div class="w-full flex justify-center gap-5 font-roboto -mt-20">
+    <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right"
+        data-aos-duration="2000">
+        <h1 class="text-white text-xs lg:text-lg text-center">Poster</h1>
+    </div>
+    <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-left"
+        data-aos-duration="2000">
+        <h1 class="text-white text-xs lg:text-lg text-center">Rules</h1>
+    </div>
+</div>
+</section>
+
+
+<!-- Start Slide 3 - Tahapan -->
+<section class="w-full h-full bg-center bg-cover" style="background-image: url('./../img/bg1/3.1.1.svg')">
+    <div class="flex justify-center items-center mx-5 lg:mx-10 mt-10 pt-7" data-aos="fade-down"
+        data-aos-duration="2000">
+        <img src="./../img/element/Bintang.svg" class="w-10 lg:w-20" alt="" />
+        <div>
+            <h1 class="text-center text-white mt-5 text-xs font-khdam">
+                IFEST #13 : HEROES OF INNOVATION
+            </h1>
+            <h1 class="text-white text-center font-jersey text-4xl lg:text-5xl mx-2 mt-3">
+                TAHAPAN CAPTURE THE FLAG
+            </h1>
+            <h1 class="text-center text-white mt-2 text-sm lg:text-base font-khdam">
+                Berikut ketentuan umum dan ketentuan karya untuk lomba Capture The Flag
+            </h1>
+        </div>
+        <img src="./../img/element/Bintang.svg" class="w-10 lg:w-20" alt="" />
+    </div>
+
+    <div>
+        <div class="absolute right-0 mt-8 lg:mt-24 z-0">
+            <img src="./../img/element/awan.svg" alt="awan" class="w-[180px] lg:w-[650px]" data-aos="fade-up"
+                data-aos-duration="2000" />
+        </div>
+        <div class="absolute left-0 scale-x-[-1]">
+            <img src="./../img/element/awan.svg" alt="awan" class="w-[150px] lg:w-[500px]" data-aos="fade-up"
+                data-aos-duration="2000" />
+        </div>
+    </div>
+
+    <div>
+        <div class="absolute right-0 mt-16 lg:mt-36 z-0">
+            <img src="./../img/element/ufo.svg" alt="awan" class="w-[80px] lg:w-[350px] mr-14 lg:mr-56"
+                data-aos="fade-down" data-aos-duration="3000" />
+        </div>
+        <div class="absolute left-0 scale-x-[1] ml-8 lg:ml-60">
+            <img src="./../img/element/ufo.svg" alt="awan" class="w-[120px] lg:w-[300px] mt-6 lg:mt-6"
+                data-aos="fade-down" data-aos-duration="3000" />
+        </div>
+    </div>
+
+    <!-- Start - Ketentuan-->
+    <div class="justify-center items-center flex-col flex mt-5 lg:mt-10">
+        <img src="./../img/element/icon bulan.svg" alt="" class="w-28 lg:w-52 z-10 mr-16" data-aos="flip-left"
+            data-aos-duration="3000" />
+
+        <!-- Start - Ketentuan Mobile -->
+        <div class="lg:hidden mt-5">
+            <div class="flex flex-col mx-10 items-center">
+                <div class="bg-white w-full h-auto rounded-xl max-h-[500px] overflow-y-scroll" style="
+          box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2),
+            0 4px 25px rgba(255, 255, 255, 0.15),
+            0 -4px 25px rgba(255, 255, 255, 0.15),
+            -4px 0 15px rgba(255, 255, 255, 0.15),
+            4px 0 15px rgba(255, 255, 255, 0.15);
+        " data-aos="fade-left" data-aos-duration="2000" data-aos-delay="150">
+                    <div class="p-5">
+                        <h1 class="text-center font-jersey25 text-3xl text-[#2D678C]">
+                            KETENTUAN UMUM
+                        </h1>
+                        <div class="font-inter mt-2 text-xs">
+                            <ul class="space-y-2">
+                                <li>
+                                    1. Setiap peserta harus merupakan siswa aktif SMA/sederajat.
+                                </li>
+                                <li>
+                                    2. Setiap peserta harus tergabung dalam tim yang beranggotak tiga (3) orang.
+                                </li>
+                                <li>
+                                    3. Setiap peserta hanya boleh terdaftar dalam satu (1) tim
+                                </li>
+                                <li>
+                                    4. Setiap anggota tim harus berasal dari sekolah yang sama.
+                                </li>
+                                <li>
+                                    5. Setiap tim harus memenuhi prosedur pendaftaran yang telah ditetapkan.
+                                </li>
+                                <li>
+                                    6. Seriap tim tidak boleh mengganti anggota yang sudah terdaftar pada formular
+                                    peserta.
+                                </li>
+                                <li>
+                                    7. Setiap tim harus membayar biaya pendaftaran lomba sebesar Rp 100.000.00
+                                </li>
+                                <li>
+                                    8. Pengembalian (refund) biaya pendaftaran tidak dapat dilakukan dalam keadaan apa
+                                    pun.
+                                </li>
+                                <li>
+                                    9. Setiap tim yang lolos ke tahap Expo wajib berangkat ke Universitas Atma Jaya
+                                    Yogyakarta.
+                                </li>
+                                <li>
+                                    10. Setiap tim yang lolos ke tahap Expo wajib didampingi oleh guru pembimbing yang
+                                    berasal dari sekolah yang sama.
+                                </li>
+                                <li>
+                                    11. Setiap tim hanya boleh didampingi oleh satu (1) guru pembimbing.
+                                </li>
+                                <li>
+                                    12. Setiap guru dapat membimbing lebih dari satu (1) tim, selama tim berasal dari
+                                    sekolah yang sama.
+                                </li>
+                                <li>
+                                    13. Setiap sekolah bebas untuk mendaftarkan lebih dari satu (1) tim.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <img src="./../img/element/garis_horizontal.svg" alt="" class="my-5 w-96" />
+                <div class="bg-white w-full max-h-[500px] rounded-xl" style="
+          box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2),
+            0 4px 25px rgba(255, 255, 255, 0.15),
+            0 -4px 25px rgba(255, 255, 255, 0.15),
+            -4px 0 15px rgba(255, 255, 255, 0.15),
+            4px 0 15px rgba(255, 255, 255, 0.15);
+        " data-aos="fade-right" data-aos-duration="2000" data-aos-delay="150">
+                    <div class="p-5">
+                        <h1 class="text-center font-jersey25 text-3xl text-[#2D678C]">
+                            KETENTUAN KARYA
+                        </h1>
+                        <div class="font-inter mt-2 text-xs">
+                            <ul class="space-y-2">
+                                <li>1. Setiap karya harus berkaitan dengan Teknologi Informasi.</li>
+                                <li>
+                                    2. Setiap karya harus sesuai dengan teman yang diberikan.
+                                </li>
+                                <li>3. Setiap Karya harus merupakan ide orisinal peserta.</li>
+                                <li>
+                                    4. Setiap karya tidak boleh menyinggung elemen yang berkaitan dengan etnis, suku,
+                                    agama, tindakan perundangan hingga SARA.
+                                </li>
+                                <li>
+                                    5. Setiap karya belum pernah dimasukkan dalam lomba yang sejenis sebelumnya.
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End - Ketentuan Mobile -->
+
+        <!-- Start - Ketentuan Desktop-->
+        <div class="hidden lg:block mt-10">
+            <div class="flex items-center space-x-10">
+                <div class="bg-white w-[40vw] h-auto rounded-xl" style="
+          box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2),
+            0 4px 25px rgba(255, 255, 255, 0.15),
+            0 -4px 25px rgba(255, 255, 255, 0.15),
+            -4px 0 15px rgba(255, 255, 255, 0.15),
+            4px 0 15px rgba(255, 255, 255, 0.15);
+        " data-aos="fade-right" data-aos-duration="2000" data-aos-delay="150">
+                    <div class="flex flex-col p-5">
+                        <h1 class="text-center font-jersey25 text-3xl text-[#2D678C]">
+                            KETENTUAN UMUM
+                        </h1>
+                        <div class="font-inter mt-2 text-sm">
+                            <ul class="space-y-2">
+                                <li>
+                                    1. Setiap peserta harus merupakan siswa aktif SMA/sederajat.
+                                </li>
+                                <li>
+                                    2. Setiap peserta harus tergabung dalam tim yang beranggotak tiga (3) orang.
+                                </li>
+                                <li>
+                                    3. Setiap peserta hanya boleh terdaftar dalam satu (1) tim
+                                </li>
+                                <li>
+                                    4. Setiap anggota tim harus berasal dari sekolah yang sama.
+                                </li>
+                                <li>
+                                    5. Setiap tim harus memenuhi prosedur pendaftaran yang telah ditetapkan.
+                                </li>
+                                <li>
+                                    6. Seriap tim tidak boleh mengganti anggota yang sudah terdaftar pada formular
+                                    peserta.
+                                </li>
+                                <li>
+                                    7. Setiap tim harus membayar biaya pendaftaran lomba sebesar Rp 100.000.00
+                                </li>
+                                <li>
+                                    8. Pengembalian (refund) biaya pendaftaran tidak dapat dilakukan dalam keadaan apa
+                                    pun.
+                                </li>
+                                <li>
+                                    9. Setiap tim yang lolos ke tahap Expo wajib berangkat ke Universitas Atma Jaya
+                                    Yogyakarta.
+                                </li>
+                                <li>
+                                    10. Setiap tim yang lolos ke tahap Expo wajib didampingi oleh guru pembimbing yang
+                                    berasal dari sekolah yang sama.
+                                </li>
+                                <li>
+                                    11. Setiap tim hanya boleh didampingi oleh satu (1) guru pembimbing.
+                                </li>
+                                <li>
+                                    12. Setiap guru dapat membimbing lebih dari satu (1) tim, selama tim berasal dari
+                                    sekolah yang sama.
+                                </li>
+                                <li>
+                                    13. Setiap sekolah bebas untuk mendaftarkan lebih dari satu (1) tim.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <img src="./../img/element/garis_vertikal.svg" alt="" class="w-7 h-auto mt-16" />
+                <div class="bg-white w-[40vw] h-auto rounded-xl z-10 max-h-[690px]" style="
+          box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2),
+            0 4px 25px rgba(255, 255, 255, 0.15),
+            0 -4px 25px rgba(255, 255, 255, 0.15),
+            -4px 0 15px rgba(255, 255, 255, 0.15),
+            4px 0 15px rgba(255, 255, 255, 0.15);
+        " data-aos="fade-left" data-aos-duration="2000" data-aos-delay="150">
+                    <div class="flex flex-col p-5">
+                        <h1 class="text-center font-jersey25 text-3xl text-[#2D678C]">
+                            KETENTUAN KARYA
+                        </h1>
+
+                        <div class="font-inter mt-2 text-sm">
+                            <ul class="space-y-2">
+                                <li>1. Karya desain berupa situs web desktop.</li>
+                                <li>
+                                    2. Setiap karya harus sesuai dengan teman yang diberikan.
+                                </li>
+                                <li>3. Setiap Karya harus merupakan ide orisinal peserta.</li>
+                                <li>
+                                    4. Setiap karya tidak boleh menyinggung elemen yang berkaitan dengan etnis, suku,
+                                    agama, tindakan perundangan hingga SARA.
+                                </li>
+                                <li>
+                                    5. Setiap karya belum pernah dimasukkan dalam lomba yang sejenis sebelumnya.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End - Ketentuan Desktop-->
+    </div>
+
+    <!-- End - Ketentuan-->
+    <div class="w-full flex justify-center gap-5 font-roboto mt-7">
+        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right"
+            data-aos-duration="2000">
+            <h1 class="text-white text-xs lg:text-lg text-center">Poster</h1>
+        </div>
+        <a href="#daftar">
+            <div class="px-8 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-up"
+                data-aos-duration="2000">
+                <h1 class="text-white text-xs lg:text-lg text-center">Daftar ></h1>
+            </div>
+        </a>
+
+        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-left"
+            data-aos-duration="2000">
+            <h1 class="text-white text-xs lg:text-lg text-center">Peraturan</h1>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 4 - Time Line  -->
+<section class="w-full h-full py-5 bg-cover bg-center" style="background-image: url('./../img/bg1/3.1.2.svg')">
+    <div class="lg:block block">
+        <div class="flex items-center justify-center p-5 lg:mt-10">
+            <img src="./../img/element/Flag.svg" alt="" class="w-20 lg:w-32 z-0" data-aos="flip-right"
+                data-aos-duration="2000" />
+        </div>
+    </div>
+    <div class="flex justify-center items-center mx-5 lg:mx-10 relative z-10  transform translate-y-full mb-52 -mt-40">
+        <img src="./../img/element/Bintang.svg" class="w-10 lg:w-20" alt="" />
+        <div class="text-black mt-7 lg:mt-5">
+            <h1 class="text-center text-xs font-khdam">
+                IFEST #13 : HEROES OF INNOVATION
+            </h1>
+            <h1 class="text-center font-jersey text-4xl lg:text-5xl mx-2 mt-3">
+                TIMELINE CAPTURE THE FLAG
+            </h1>
+            <h1 class="text-center text-sm lg:text-base font-khdam mt-2">
+                Berikut timeline untuk lomba Capture The Flag
+            </h1>
+        </div>
+        <img src="./../img/element/Bintang.svg" class="w-10 lg:w-20" alt="" />
+    </div>
+
+    <div>
+        <div class="absolute right-0 mt-40 lg:-mt-56 z-0">
+            <img src="./../img/element/Rope.svg " alt="rope" class="w-[70px] lg:w-[200px]" data-aos="fade-right"
+                data-aos-duration="2000" />
+        </div>
+        <div class="absolute left-0 scale-x-[-1] mt-96 lg:-mt-56">
+            <img src="./../img/element/Rope.svg" alt="rope" class="w-[70px] lg:w-[200px]" data-aos="fade-right"
+                data-aos-duration="2000" />
+        </div>
+    </div>
+    <!-- Start - Timeline -->
+
+    <!-- Start - Mobile -->
+
+    <div class="block lg:hidden p-5">
+        <div class="mx-5 items-center justify-center flex flex-col gap-4">
+            <div class="flex items-center justify-center relative mr-10" data-aos="flip-left" data-aos-duration="2000"
+                data-aos-delay="100">
+                <div class="absolute -top-1 bg-[#EDB108] w-32 h-3 rounded-full drop-shadow-lg z-0"></div>
+                <div class="border-4 border-[#EDB108] w-auto h-auto p-3 rounded-xl">
+                    <div
+                        class="bg-[white] p-5 w-56 rounded-xl flex flex-col items-center justify-center font-khdam text-center mt-4">
+                        <span class="text-sm">2 Feb - 1 Mar 2025</span>
+                        <!-- <div class="py-2 flex gap-2 items-center">
+                            <img src="img/icon/web.png" class="w-8" alt="" />
+                            <h1 class="text-xs">Web IFEST #13</h1>
+                        </div> -->
+                        <h1 class="font-jersey25 text-base text-center">
+                            PENDAFTARAN
+                        </h1>
+                    </div>
+                </div>
+                <div class="absolute -bottom-1 bg-[#EDB108] w-32 h-3 rounded-full drop-shadow-lg"></div>
+            </div>
+            <img src="./../img/element/panah.svg" class="w-16 py-3 rotate-45 " alt="" />
+            <div class="flex items-center justify-center relative ml-10 " data-aos="flip-right" data-aos-duration="2000"
+                data-aos-delay="100">
+                <div class="absolute -top-1 bg-[#E98F06] w-32 h-3 rounded-full drop-shadow-lg"></div>
+                <div class="border-4 border-[#E98F06] w-auto h-auto p-3 rounded-xl">
+                    <div
+                        class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
+                        <span class="text-sm">2 Feb - 1 Mar 2025</span>
+                        <!-- <div class="py-2 flex gap-2 items-center">
+                            <img src="img/icon/form.png" class="w-8" alt="" />
+                            <h1 class="text-xs">Google Form</h1>
+                        </div> -->
+                        <h1 class="font-jersey25 text-xl text-center">
+                            PENGUMPULAN <br />PROPOSAL
+                        </h1>
+                    </div>
+                </div>
+                <div class="absolute -bottom-1 bg-[#E98F06] w-32 h-3 rounded-full drop-shadow-lg"></div>
+            </div>
+            <img src="./../img/element/panah.svg" class="w-16 py-3 -rotate-45 scale-x-[-1] " alt="" />
+            <div class="flex items-center justify-center relative mr-10  mb-4" data-aos="flip-left"
+                data-aos-duration="2000" data-aos-delay="100">
+                <div class="absolute -top-1 bg-[#DD5017] w-32 h-3 rounded-full drop-shadow-lg"></div>
+                <div class="border-4 border-[#DD5017] w-auto h-auto p-3 rounded-xl">
+                    <div
+                        class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
+                        <span class="text-sm">2 Feb - 1 Mar 2025</span>
+                        <!-- <div class="py-2 flex gap-2 items-center">
+                            <img src="img/icon/online.png" class="w-8" alt="" />
+                            <h1 class="text-xs">Online</h1>
+                        </div> -->
+                        <h1 class="font-jersey25 text-xl text-center">
+                            SELEKSI <br />PROPOSAL
+                        </h1>
+                    </div>
+                </div>
+                <div class="absolute -bottom-1 bg-[#DD5017] w-32 h-3 rounded-full drop-shadow-lg"></div>
+            </div>
+            <img src="./../img/element/panah.svg" class="w-16 py-3 rotate-45 " alt=" " />
+            <div class="flex items-center justify-center relative ml-10  mb-4" data-aos="flip-right"
+                data-aos-duration="2000" data-aos-delay="100">
+                <div class="absolute -top-1 bg-[#6C1F00] w-32 h-3 rounded-full drop-shadow-lg"></div>
+                <div class="border-4 border-[#6C1F00] w-auto h-auto p-3 rounded-xl">
+                    <div
+                        class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
+                        <span class=" text-sm ">2 Feb - 1 Mar 2025</span>
+                        <!-- <div class=" py-2 flex gap-2 items-center ">
+                            <img src=" img/icon/ig.png " class=" w-8 " alt=" " />
+                            <h1 class=" text-xs ">@ifest_uajy</h1>
+                        </div> -->
+                        <h1 class=" font-jersey25 text-xl text-center ">
+                            PENGUMPULAN <br />& TECH MEET
+                        </h1>
+                    </div>
+                </div>
+                <div class=" absolute -bottom-1 bg-[#6C1F00] w-32 h-3 rounded-full drop-shadow-lg "></div>
+            </div>
+            <img src=" ./../img/element/panah.svg " class="w-16 py-3 rotate-45 " alt=" " />
+            <div class="flex items-center justify-center relative ml-10  mb-4" data-aos="flip-left"
+                data-aos-duration="2000" data-aos-delay="100">
+                <div class="absolute -top-1 bg-[#CE178F] w-32 h-3 rounded-full drop-shadow-lg"></div>
+                <div class="border-4 border-[#CE178F] w-auto h-auto p-3 rounded-xl">
+                    <div
+                        class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
+                        <span class=" text-sm ">2 Feb - 1 Mar 2025</span>
+                        <!-- <div class=" py-2 flex gap-2 items-center ">
+                            <img src=" img/icon/zoom.png " class=" w-8 " alt=" " />
+                            <h1 class=" text-xs ">Zoom Meeting</h1>
+                        </div> -->
+                        <h1 class=" font-jersey25 text-xl text-center ">
+                            INVENTOR <br />EXPO
+                        </h1>
+                    </div>
+                </div>
+                <div class=" absolute -bottom-1 bg-[#CE178F] w-32 h-3 rounded-full drop-shadow-lg "></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End - Mobile -->
+
+    <!-- Start - Desktop -->
+    <div class=" hidden lg:block mt-10 ">
+        <div class=" flex items-center justify-center gap-3 ">
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 1 "
+                data-aos="flip-right" data-aos-duration="2000" data-aos-delay="100">
+                <div class=" absolute -top-3 bg-[#EDB108] w-48 h-7 rounded-full drop-shadow-lg "></div>
+                <div class=" border-4 border-[#EDB108] w-72 h-auto p-7 rounded-3xl ">
+                    <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
+                text-center ">
+                        <span>2 Feb - 1 Mar 2025</span>
+                        <!-- <div class=" py-2 flex gap-2 items-center ">
+                            <img src=" img/icon/web.png " class=" w-8 " alt=" " />
+                            <h1 class=" text-sm ">Web IFEST #13</h1>
+                        </div> -->
+                        <h1 class=" font-jersey25 text-lg text-center mt-1 ">
+                            PENDAFTARAN
+                        </h1>
+                    </div>
+                </div>
+                <div class=" absolute -bottom-3 bg-[#EDB108] w-48 h-7 rounded-full drop-shadow-lg "></div>
+            </div>
+            <img src=" ./../img/element/panah.svg " class=" w-24 fadeIn " style=" --fadeDuration: 1 " alt=" " />
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 2 "
+                data-aos="flip-left" data-aos-duration="2000" data-aos-delay="200">
+                <div class=" absolute -top-3 bg-[#E98F06] w-48 h-7 rounded-full drop-shadow-lg "></div>
+                <div class=" border-4 border-[#E98F06] w-72 h-auto p-7 rounded-3xl ">
+                    <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
+                text-center ">
+                        <span>2 Feb - 1 Mar 2025</span>
+                        <!-- <div class=" py-2 flex gap-2 items-center ">
+                            <img src=" img/icon/form.png " class=" w-8 " alt=" " />
+                            <h1 class=" text-sm ">Google Form</h1>
+                        </div> -->
+                        <h1 class=" font-jersey25 text-lg text-center mt-1 ">
+                            PENGUMPULAN <br />PROPOSAL
+                        </h1>
+                    </div>
+                </div>
+                <div class=" absolute -bottom-3 bg-[#E98F06] w-48 h-7 rounded-full drop-shadow-lg "></div>
+            </div>
+            <img src=" ./../img/element/panah.svg " class=" w-24 fadeIn " style=" --fadeDuration: 2 " alt=" " />
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 3 "
+                data-aos="flip-right" data-aos-duration="2000" data-aos-delay="300">
+                <div class=" absolute -top-3 bg-[#DD5017] w-48 h-7 rounded-full drop-shadow-lg "></div>
+                <div class=" border-4 border-[#DD5017] w-72 h-auto p-7 rounded-3xl ">
+                    <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
+                text-center ">
+                        <span>2 Feb - 1 Mar 20255</span>
+                        <!-- <div class=" py-2 flex gap-2 items-center ">
+                            <img src=" img/icon/online.png " class=" w-8 " alt=" " />
+                            <h1 class=" text-sm ">Online</h1>
+                        </div> -->
+                        <h1 class=" font-jersey25 text-lg text-center ">
+                            SELEKSI <br />PROPOSAL
+                        </h1>
+                    </div>
+                </div>
+                <div class=" absolute -bottom-3 bg-[#DD5017] w-48 h-7 rounded-full drop-shadow-lg "></div>
+            </div>
+        </div>
+        <div class=" py-4 "></div>
+        <div class=" flex items-center justify-center gap-3 mt-5 ">
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 6 "
+                data-aos="flip-left" data-aos-duration="2000" data-aos-delay="400">
+                <div class=" absolute -top-3 bg-[#A33EA1] w-48 h-7 rounded-full drop-shadow-lg "></div>
+                <div class=" border-4 border-[#A33EA1] w-72 h-auto p-7 rounded-3xl ">
+                    <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
+                text-center ">
+                        <span>2 Feb - 1 Mar 2025</span>
+                        <!-- <div class=" py-2 flex gap-2 items-center ">
+                            <img src=" img/icon/univ.png " class=" w-8 " alt=" " />
+                            <h1 class=" text-xs ">
+                                Ruang Auditorium Gedung St. Bonaventura Lt. 4
+                            </h1>
+                        </div> -->
+                        <h1 class=" font-jersey25 text-xl text-center ">
+                            PENGUMPULAN <br />& TECH MEET
+                        </h1>
+                    </div>
+                </div>
+                <div class=" absolute -bottom-3 bg-[#A33EA1] w-48 h-7 rounded-full drop-shadow-lg "></div>
+            </div>
+            <img src=" ./../img/element/panah.svg " class=" w-24 scale-x-[-1] fadeIn " style=" --fadeDuration:
+                4 " alt=" " />
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 5 "
+                data-aos="flip-right" data-aos-duration="2000" data-aos-delay="500">
+                <div class=" absolute -top-3 bg-[#CE178F] w-48 h-7 rounded-full drop-shadow-lg "></div>
+                <div class=" border-4 border-[#CE178F] w-72 h-auto p-7 rounded-3xl ">
+                    <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
+                text-center ">
+                        <span>2 Feb - 1 Mar 2025</span>
+                        <!-- <div class=" py-2 flex gap-2 items-center ">
+                            <img src=" img/icon/zoom.png " class=" w-8 " alt=" " />
+                            <h1 class=" text-sm ">Zoom Meeting</h1>
+                        </div> -->
+                        <h1 class=" font-jersey25 text-lg text-center ">
+                            INVENTOR <br />EXPO
+                        </h1>
+                    </div>
+                </div>
+                <div class=" absolute -bottom-3 bg-[#CE178F] w-48 h-7 rounded-full drop-shadow-lg "></div>
+            </div>
+        </div>
+    </div>
+    <!-- End - Desktop -->
+
+    <!-- End - TImeline-->
+</section>
+
+<!-- Slide 6 - Juara -->
+<section class=" w-full h-full lg:h-screen bg-cover bg-center " style=" background-image: url( './../img/bg/4.svg' ) ">
+    <div class=" flex justify-center items-center mx-5 lg:mx-10 " data-aos="fade-up" data-aos-duration="2000">
+        <img src="./../img/element/Bintang.svg" class=" w-10 lg:w-20 mt-32" alt=" " />
+        <div class=" text-black mt-32 ">
+            <h1 class=" text-center mt-5 text-xs font-khdam ">
+                IFEST #13 : HEROES OF INNOVATION
+            </h1>
+            <h1 class=" t text-center font-jersey text-4xl lg:text-5xl mx-2 mt-3 ">
+                PRICEPOOL
+            </h1>
+            <h1 class=" text-center mt-2 text-sm lg:text-base font-khdam ">
+                Total hadiah Rp. 9.000.000
+            </h1>
+        </div>
+        <img src="./../img/element/Bintang.svg" class=" w-10 lg:w-20 mt-32" alt=" " />
+    </div>
+
+    <div>
+        <div class="absolute right-0 mt-60 lg:mt-1 z-0">
+            <img src="./../img/element/Rope2.svg " alt="rope" class="w-[70px] lg:w-[100px]" data-aos="flip-right"
+                data-aos-duration="2000" data-aos-delay="150" />
+        </div>
+        <div class="absolute left-0 scale-x-[-1] mt-64 lg:mt-1">
+            <img src="./../img/element/Rope2.svg" alt="rope" class="w-[70px] lg:w-[100px]" data-aos="flip-left"
+                data-aos-duration="2000" data-aos-delay="150" />
+        </div>
+    </div>
+
+    <!-- Start - Juara -->
+    <!-- Start - Juara Mobile -->
+    <div class=" block lg:hidden ">
+        <div class=" mt-5 items-center flex flex-col space-y-5 ">
+            <div data-aos="fade-right" data-aos-duration="2000" data-aos-delay="100">
+                <img src=" ./../img/element/Trophy 1.svg " class=" w-32 " alt=" " />
+                <h1 class=" font-jersey25 text-center text-xl mt-2 ">FIRST</h1>
+                <div class=" font-khdam text-center text-sm ">
+                    <p>Rp3.000.000,00</p>
+                    <p>National Certificate</p>
+                </div>
+            </div>
+            <div data-aos="fade-left" data-aos-duration="2000" data-aos-delay="300">
+                <img src=" ./../img/element/Trophy 2.svg " class=" w-32 " alt=" " />
+                <h1 class=" font-jersey25 text-center text-xl mt-2 ">SECOND</h1>
+                <div class=" font-khdam text-center text-sm ">
+                    <p>Rp2.000.000,00</p>
+                    <p>National Certificate</p>
+                </div>
+            </div>
+            <div data-aos="fade-right" data-aos-duration="2000" data-aos-delay="500">
+                <img src=" ./../img/element/Trophy 3.svg " class=" w-32 " alt=" " />
+                <h1 class=" font-jersey25 text-center text-xl mt-2 ">THIRD</h1>
+                <div class=" font-khdam text-center text-sm ">
+                    <p>Rp1.000.000,00</p>
+                    <p>National Certificate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End - Juara Mobile -->
+
+    <!-- Start - Juara Desktop -->
+    <div class=" hidden lg:block ">
+        <div class=" flex items-center justify-center gap-20 mt-10 ">
+            <div class=" mt-20 " data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
+                <img src=" ./../img/element/Trophy 2.svg " class=" w-80 " alt=" " />
+                <h1 class=" font-jersey25 text-center text-3xl mt-2 ">SECOND</h1>
+                <div class=" font-khdam text-center ">
+                    <p>Rp2.000.000,00</p>
+                    <p>National Certificate</p>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-duration="2000" data-aos-delay="200">
+                <img src=" ./../img/element/Trophy 1.svg " class=" w-80 " alt=" " />
+                <h1 class=" font-jersey25 text-center text-3xl mt-2 ">FIRST</h1>
+                <div class=" font-khdam text-center ">
+                    <p>Rp3.000.000,00</p>
+                    <p>National Certificate</p>
+                </div>
+            </div>
+            <div class=" mt-20 " data-aos="fade-up" data-aos-duration="2000" data-aos-delay="1000">
+                <img src=" ./../img/element/Trophy 3.svg " class=" w-80 " alt=" " />
+                <h1 class=" font-jersey25 text-center text-3xl mt-2 ">THIRD</h1>
+                <div class=" font-khdam text-center ">
+                    <p>Rp1.000.000,00</p>
+                    <p>National Certificate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End - Juara Desktop -->
+
+    <!-- End - Juara-->
+</section>
+<section class=" w-full h-[400px] bg-cover bg-center flex flex-col items-center justify-center "
+    style=" background-image: url( './../img/bg/6.svg' ) ">
+    <div class=" flex justify-center items-center mx-5 lg:mx-10 ">
+        <img src=" ./../img/element/Bintang.svg " class=" w-10 lg:w-20 " alt=" " data-aos="flip-left"
+            data-aos-duration="2000" />
+        <div class=" text-black text-center " data-aos="zoom-in" data-aos-duration="3000">
+            <h1 class=" text-xs font-khdam ">IFEST #13 : HEROES OF INNOVATION</h1>
+            <h1 class=" font-jersey text-4xl lg:text-5xl mx-2 mt-3 ">
+                TERTARIK? AYO SEGERA DAFTAR!
+            </h1>
+            <h1 class=" mt-2 text-sm lg:text-base font-khdam ">
+                Apakah kamu siap menghadapi tantangan di dunia teknologi informasi?
+                <br />Ayo, jangan lewatkan kesempatan untuk menunjukkan kreativitas dan keahlianmu di IFEST #13! 🌐
+            </h1>
+        </div>
+        <img src=" ./../img/element/Bintang.svg " class=" w-10 lg:w-20 " alt=" " data-aos="flip-right"
+            data-aos-duration="2000" />
+    </div>
+    <div class=" w-full flex justify-center gap-5 font-roboto mt-10 ">
+        <a href=" #daftar ">
+            <div class=" px-8 bg-[#F4347F] rounded-3xl h-10 grid place-items-center " data-aos="fade-up"
+                data-aos-duration="2000">
+                <h1 class=" text-white text-xs lg:text-lg text-center ">Daftar ></h1>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- Slide 7 - Contact -->
+
+<!-- Start - Contact us-->
+<section class=" w-full h-screen bg-cover bg-center " style=" background-image: url( './../img/bg/7.svg' ) ">
+    <div>
+        <div class="absolute -left-16 mt-32 scale-x-[-1]">
+            <img src="./../img/element/awan.svg" alt="awan" class="w-[250px] lg:w-[700px]" data-aos="fade-right"
+                data-aos-duration="2000" />
+        </div>
+        <div class="absolute right-0 mt-64 lg:mt-52">
+            <img src="./../img/element/awan.svg" alt="awan" class="w-[150px] lg:w-[500px]" data-aos="fade-down"
+                data-aos-duration="2000" />
+        </div>
+    </div>
+    <div class=" flex justify-center items-center mx-5 lg:mx-10 " data-aos="fade-down" data-aos-duration="2000">
+        <img src=" ./../img/element/Bintang.svg " class=" w-10 lg:w-20 " alt=" " />
+        <div class=" text-black ">
+            <h1 class=" text-center mt-5 text-xs font-khdam ">
+                IFEST #13 : HEROES OF INNOVATION
+            </h1>
+            <h1 class=" text-center font-jersey text-4xl lg:text-5xl mx-2 mt-3 ">
+                CONTACT PERSON
+            </h1>
+            <h1 class=" text-center mt-2 text-sm lg:text-base font-khdam ">
+                Jika Anda memiliki pertanyaan lebih lanjut atau membutuhkan bantuan terkait <br />Capture The Flag IFEST
+                #13, jangan ragu untuk menghubungi kami!!
+            </h1>
+        </div>
+        <img src=" ./../img/element/Bintang.svg " class=" w-10 lg:w-20 " alt=" " />
+    </div>
+
+    <div class=" relative flex justify-center items-center mt-20 lg:mt-20 " data-aos="fade-up" data-aos-duration="3000">
+        <!-- Frame -->
+        <img src=" ./../img/element/frame contact.svg " alt=" " class=" w-64 h-auto " />
+
+        <!-- Konten -->
+        <div class="absolute inset-0 flex flex-col justify-center ">
+            <!-- Bagian atas -->
+            <div class="-mt-12 mb-9 flex flex-col items-center ">
+                <h1 class=" text-5xl text-[#00296B] font-jersey25 flex items-center ">
+                    l2C
+                    <img src=" ./../img/element/element contact.svg " class=" w-2 lg:w-8 ml-2 " alt=" " />
+                </h1>
+                <h1 class=" text-[#00296B] font-inter text-center text-sm ">
+                    Business Case Competition
+                </h1>
+            </div>
+
+            <!-- Bagian nomor telepon -->
+            <div class=" flex flex-col items-center space-y-3 ">
+                <!-- Nomor 1 -->
+                <div class=" flex flex-col items-center mb-5 ">
+                    <h1 class=" text-[#552E91] font-montserrat text-sm ">Alvin</h1>
+                    <div class=" flex ">
+                        <button class=" bg-[#5ECC85] text-[#552E91] px-4 py-2 rounded-full text-sm flex items-center
+                space-x-2 hover:bg-green-200 ">
+                            <img src=" ./../img/element/whatsapp.svg " alt=" WhatsApp Logo " class=" w-5 h-5 ">
+                            <span>0932840235</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Nomor 2 -->
+                <div class=" flex flex-col items-center ">
+                    <h1 class=" text-[#552E91] font-montserrat text-sm ">Jeany</h1>
+                    <div class=" flex ">
+                        <button class=" bg-[#5ECC85] text-[#552E91] px-4 py-2 rounded-full text-sm flex items-center
+                space-x-2 hover:bg-green-200 ">
+                            <img src=" ./../img/element/whatsapp.svg " alt=" WhatsApp Logo " class=" w-5 h-5 ">
+                            <span>0932840235</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="absolute -left-16 ml-14 mt-4 lg:-mt-24
+         scale-x-[-1]">
+            <img src="./../img/element/pelangi.svg" alt="awan" class="w-[200px] lg:w-[600px] opacity-80"
+                data-aos="flip-left" data-aos-duration="3000" />
+        </div>
+        <div class="absolute right-0 mt-24 lg:-mt-24">
+            <img src="./../img/element/pelangi.svg" alt="awan" class="w-[200px] lg:w-[600px] opacity-80"
+                data-aos="flip-right" data-aos-duration="3000" />
+        </div>
+    </div>
+</section>
+<!-- End- Contact us-->
+
+<!-- Start - Footer-->
+<section>
+    <!-- Start - Mobile -->
+
+    <div class="lg:hidden">
+        <div class="bg-[#00296B] h-auto w-auto text-white">
+            <div class="relative z-0">
+                <div class="absolute w-36">
+                    <img src="img/element/garis_footer.svg" alt="" class="opacity-85" />
+                </div>
+
+                <div class="absolute w-36 right-0 scale-x-[-1]">
+                    <img src="img/element/garis_footer.svg" alt="" class="opacity-85" />
+                </div>
+            </div>
+
+            <div class="relative z-0">
+                <div class="px-10 pt-20 pb-10">
+                    <div>
+                        <a href="/">
+                            <img src="img/element/logo_footer.svg" alt="" class="w-40" />
+                            <h1 class="font-interBold mt-3 text-xl">IFest #13</h1>
+                        </a>
+                    </div>
+                    <h1 class="font-inter mt-3 max-w-sm text-sm">
+                        The premier annual IT event hosted by HIMAFORKA UAJY. Brings together technology enthusiasts for
+                        a week of innovation, competition, and collaboration.
+                    </h1>
+                    <hr class="my-5" />
+                    <div class="flex flex-col space-y-5">
+                        <div class="flex flex-col">
+                            <h1 class="font-interBold text-xl">EVENTS</h1>
+                            <div class="mt-5 hover:underline">
+                                <a href="/semnas" class="font-inter">Seminar nasional</a>
+                            </div>
+                        </div>
+                        <hr class="my-5" />
+                        <div class="flex flex-col space-y-5">
+                            <h1 class="font-interBold text-xl">COMPETITION</h1>
+                            <div class="hover:underline">
+                                <a href="/muc" class="font-inter">Mobile UI/UX Competition (MUC)</a>
+                            </div>
+                            <div class="hover:underline">
+                                <a href="/wdc" class="font-inter">Web Design Competition (WDC)</a>
+                            </div>
+                            <div class="hover:underline">
+                                <a href="/ctf" class="font-inter">Capture The Flag (CTF)</a>
+                            </div>
+                        </div>
+                        <hr class="my-5" />
+                        <div class="flex flex-col space-y-3">
+                            <h1 class="font-interBold text-xl">SOCIAL MEDIA</h1>
+                            <div class="flex gap-2">
+                                <a href=""><img src="img/icon/mingcute_youtube-fill.svg" alt="" class="w-10" /></a>
+
+                                <a href="https://www.instagram.com/ifest_uajy/"><img
+                                        src="img/icon/mingcute_instagram-fill.svg" alt="" class="w-10" /></a>
+                                <a href=""><img src="img/icon/mingcute_line-app-fill.svg" alt="" class="w-10" /></a>
+                            </div>
+                        </div>
+                        <hr class="my-5" />
+                        <div class="flex flex-col space-y-3">
+                            <h1 class="font-interBold text-xl">OUR CONTACTS</h1>
+                            <div class="mt-3 hover:underline">
+                                <a href="/" class="font-inter">ifestuajy@gmail.com</a>
+                            </div>
+                            <h1 class="mt-2">+6212345678</h1>
+                        </div>
+                        <hr class="my-5" />
+                        <div class="text-center pt-10">
+                            <h1 class="text-white font-extrabold text-center">
+                                © 2025 IFEST #13 UAJY. All rights reserved. <br /> Organized by WD IFEST #13
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End - Mobile -->
+
+    <!-- Start - Desktop -->
+    <div class="hidden lg:block">
+        <div class="bg-[#00296B] h-auto w-auto">
+            <div class="relative z-0">
+                <div class="absolute w-56">
+                    <img src="img/element/garis_footer.svg" alt="" class="opacity-85" />
+                </div>
+
+                <div class="absolute w-56 right-0 scale-x-[-1]">
+                    <img src="img/element/garis_footer.svg" alt="" class="opacity-85" />
+                </div>
+            </div>
+
+            <div class="relative z-10">
+                <div class="py-10 px-20 flex w-auto">
+                    <div class="mx-auto text-white">
+                        <div>
+                            <a href="/">
+                                <img src="img/element/logo_footer.svg" alt="" />
+                                <h1 class="font-interBold mt-3 text-xl">IFest #13</h1>
+                            </a>
+                        </div>
+
+                        <h1 class="font-inter mt-5 w-96">
+                            The premier annual IT event hosted by HIMAFORKA UAJY. Brings together technology enthusiasts
+                            for a week of innovation, competition, and collaboration.
+                        </h1>
+                        <h1 class="font-interBold mt-8 text-xl">Presented By</h1>
+                        <img src="img/element/logo_hima.svg" class="w-28 mt-5" alt="" />
+                    </div>
+                    <div class="mx-auto text-white">
+                        <h1 class="font-interBold text-xl">EVENTS</h1>
+                        <div class="mt-5 hover:underline">
+                            <a href="/semnas" class="font-inter">Seminar nasional</a>
+                        </div>
+                    </div>
+                    <div class="mx-auto text-white">
+                        <h1 class="font-interBold text-xl">COMPETITION</h1>
+                        <div class="mt-5 hover:underline">
+                            <a href="/muc" class="font-inter">Mobile UI/UX Competition <br />
+                                (MUC)</a>
+                        </div>
+                        <div class="mt-3 hover:underline">
+                            <a href="/wdc" class="font-inter">Web Design Competition <br />
+                                (WDC)</a>
+                        </div>
+                        <div class="mt-3 hover:underline">
+                            <a href="/ctf" class="font-inter">Capture The Flag <br />
+                                (CTF)</a>
+                        </div>
+                    </div>
+                    <div class="mx-auto text-white">
+                        <div class="flex flex-col">
+                            <h1 class="font-interBold text-xl">SOCIAL MEDIA</h1>
+                            <div class="flex gap-2 mt-3">
+                                <a href=""><img src="img/icon/mingcute_youtube-fill.svg" alt="" class="w-10" /></a>
+
+                                <a href="https://www.instagram.com/ifest_uajy/" target="_blank"><img
+                                        src="img/icon/mingcute_instagram-fill.svg" alt="" class="w-10" /></a>
+                                <a href=""><img src="img/icon/mingcute_line-app-fill.svg" alt="" class="w-10" /></a>
+                            </div>
+                            <div class="mt-10">
+                                <h1 class="font-interBold text-xl">OUR CONTACTS</h1>
+                                <div class="mt-3 hover:underline">
+                                    <a href="/" class="font-inter">ifestuajy@gmail.com</a>
+                                </div>
+                                <h1 class="mt-2">+6212345678</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center">
+                <hr class="mb-5 w-96" />
+            </div>
+            <h1 class="pb-5 text-white font-extrabold text-center">
+                © 2025 IFEST #13 UAJY. All rights reserved. | Organized by WD IFEST #13
+            </h1>
+        </div>
+    </div>
+    <!-- End - Desktop -->
+</section>
+<!-- End - Footer-->
+
+<!-- Script AOS (Animation) -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+
+<script src=" script.js "></script>
+</body>
+
+</html>
