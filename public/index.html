@@ -87,6 +87,16 @@
             transform: translateY(-50%);
         }
 
+        .slider-button img {
+            width: 20px;
+            /* Default size for SVG icons */
+            height: 20px;
+            pointer-events: none;
+            /* Prevent interaction with the icon */
+        }
+
+        /* Responsive styles for different screen sizes */
+
         @media (max-width: 768px) {
             .slide {
                 width: 200px;
@@ -97,6 +107,12 @@
             .slider-button {
                 width: 30px;
                 height: 30px;
+            }
+
+            .slider-button img {
+                width: 15px;
+                /* Adjust icon size for smaller buttons */
+                height: 15px;
             }
         }
 
@@ -112,11 +128,17 @@
             }
 
             .slider-button.left {
-                left: 5px;
+                left: 30px;
             }
 
             .slider-button.right {
-                right: 5px;
+                right: 30px;
+            }
+
+            .slider-button img {
+                width: 12px;
+                /* Further adjustment for very small buttons */
+                height: 12px;
             }
         }
     </style>
@@ -350,10 +372,10 @@
 
             <!-- Navigation Buttons -->
             <button class="slider-button left" onclick="moveSlider(-1)">
-                &larr;
+                <img src="./../img/element/panah kiri.svg" alt="Left Arrow" />
             </button>
             <button class="slider-button right" onclick="moveSlider(1)">
-                &rarr;
+                <img src="./../img/element/panah kanan.svg" alt="Right Arrow" />
             </button>
         </div>
     </div>
