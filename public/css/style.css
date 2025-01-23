@@ -797,6 +797,10 @@ video {
   margin-top: 24rem;
 }
 
+.mt-48{
+  margin-top: 12rem;
+}
+
 .block{
   display: block;
 }
@@ -1007,6 +1011,10 @@ video {
 
 .w-full{
   width: 100%;
+}
+
+.w-12{
+  width: 3rem;
 }
 
 .max-w-sm{
