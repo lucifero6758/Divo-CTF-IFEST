@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital@0;1&family=Jersey+10&family=Jersey+25&family=Kdam+Thmor+Pro&family=Montserrat:ital,wght@0,700;1,700&family=Quantico:wght@700&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,700;1,14..32,700&family=Jersey+10&family=Jersey+25&family=Kdam+Thmor+Pro&family=Montserrat:ital,wght@0,700;1,700&family=Quantico:wght@700&family=Roboto&display=swap");
 
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
@@ -653,6 +653,10 @@ video {
   margin-top: -5rem;
 }
 
+.-mt-24{
+  margin-top: -6rem;
+}
+
 .-mt-40{
   margin-top: -10rem;
 }
@@ -799,34 +803,6 @@ video {
 
 .mt-96{
   margin-top: 24rem;
-}
-
-.-mt-24{
-  margin-top: -6rem;
-}
-
-.-mt-8{
-  margin-top: -2rem;
-}
-
-.-mt-10{
-  margin-top: -2.5rem;
-}
-
-.-mt-16{
-  margin-top: -4rem;
-}
-
-.-mt-1{
-  margin-top: -0.25rem;
-}
-
-.-mt-2{
-  margin-top: -0.5rem;
-}
-
-.mt-12{
-  margin-top: 3rem;
 }
 
 .block{
@@ -1399,6 +1375,10 @@ video {
   font-family: 'Inter Tight', serif;
 }
 
+.font-interBold{
+  font-family: Inter, serif;
+}
+
 .font-jersey{
   font-family: 'Jersey 10', serif;
 }
@@ -1466,6 +1446,11 @@ video {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-extrabold{
