@@ -10,142 +10,6 @@
     <!-- AOS (Animation) -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-
-    <!-- Style untuk Slider Card -->
-    <style>
-        .slider-container {
-            perspective: 1000px;
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 300px;
-            overflow: hidden;
-            /* Mengubah overflow menjadi hidden */
-            display: flex;
-            justify-content: center;
-            /* Mengatur slider ke tengah */
-            padding-left: 2%;
-            /* Anda bisa menyesuaikan nilai ini jika diperlukan */
-        }
-
-        .slider {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transform-style: preserve-3d;
-            position: relative;
-            width: calc(100% - 100px);
-            /* Menyesuaikan lebar slider untuk menghindari overflow */
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .slide {
-            flex: 0 0 auto;
-            width: 250px;
-            height: 250px;
-            background: #a3e635;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            position: absolute;
-        }
-
-        .slider-button {
-            position: absolute;
-            background: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background 0.3s ease;
-            z-index: 5;
-        }
-
-        .slider-button:hover {
-            background: #f0f0f0;
-        }
-
-        .slider-button.left {
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
-        }
-
-        .slider-button.right {
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-        }
-
-        .slider-button img {
-            width: 20px;
-            /* Default size for SVG icons */
-            height: 20px;
-            pointer-events: none;
-            /* Prevent interaction with the icon */
-        }
-
-        /* Responsive styles for different screen sizes */
-
-        @media (max-width: 768px) {
-            .slide {
-                width: 200px;
-                height: 200px;
-                font-size: 16px;
-            }
-
-            .slider-button {
-                width: 30px;
-                height: 30px;
-            }
-
-            .slider-button img {
-                width: 15px;
-                /* Adjust icon size for smaller buttons */
-                height: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slide {
-                width: 150px;
-                height: 150px;
-            }
-
-            .slider-button {
-                width: 25px;
-                height: 25px;
-            }
-
-            .slider-button.left {
-                left: 30px;
-            }
-
-            .slider-button.right {
-                right: 30px;
-            }
-
-            .slider-button img {
-                width: 12px;
-                /* Further adjustment for very small buttons */
-                height: 12px;
-            }
-        }
-    </style>
-
 </head>
 
 <!-- Start - Slide 1 & Navbar -->
@@ -166,15 +30,14 @@
     <div class="w-full h-20 lg:hidden relative">
         <div class="h-full flex items-center font-quantico">
             <div class="mx-5 flex w-full items-center">
-                <a href="/src/index.html">
+                <a href="index.html">
                     <div class="flex items-center space-x-5">
                         <img src="./../img-ctf/element/Logo IFEST.svg" alt="" class="h-6" />
                         <span class="">IFEST #13</span>
                     </div>
                 </a>
                 <div class="flex items-center lg:hidden ml-auto z-20">
-                    <button id="hamburger-btn"
-                        class="bg-white p-3 rounded-full focus:outline-none shadow-xl border border-gray-300">
+                    <button id="hamburger-btn" class="bg-white p-3 rounded-full focus:outline-none shadow-xl border border-gray-300">
                         <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -190,15 +53,11 @@
             </div>
         </div>
     </div>
-    <div id="mobile-menu"
-        class="z-10 font-quantico hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+    <div id="mobile-menu" class="z-10 font-quantico hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
         <div class="mt-16 p-5 space-y-4">
-            <div class="text-black hover:bg-gray-200 p-2 rounded flex items-center" id="kompetisi-btn-mobile"
-                role="button">
+            <div class="text-black hover:bg-gray-200 p-2 rounded flex items-center" id="kompetisi-btn-mobile" role="button">
                 KOMPETISI
-                <svg id="dropdown-arrow-mobile" xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 ml-2 transform transition-transform duration-200" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg id="dropdown-arrow-mobile" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <text x="5" y="15" id="arrow-text-mobile">v</text>
                 </svg>
             </div>
@@ -244,8 +103,7 @@
                                 <text x="5" y="15" id="arrow-text-desktop">v</text>
                             </svg>
                         </button>
-                        <div id="kompetisi-dropdown-desktop"
-                            class="absolute z-20 hidden bg-white shadow-lg rounded-md p-4 mt-2 left-0 w-64 border border-gray-300">
+                        <div id="kompetisi-dropdown-desktop" class="absolute z-20 hidden bg-white shadow-lg rounded-md p-4 mt-2 left-0 w-64 border border-gray-300">
                             <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Mobile UI/UX Competition
                                 (MUC)</a>
                             <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Web Development
@@ -268,49 +126,39 @@
 
     <!-- Start Slide 1 - Information -->
     <div class="text-center items-center justify-center flex flex-col relative z-0 mt-20 mb-8 lg:mt-20">
-        <img src="./../img-ctf/element/CTF.svg" alt="" class="mt-5 mb-2 w-20 lg:w-max" data-aos="flip-left"
-            data-aos-duration="1000" />
+        <img src="./../img-ctf/element/CTF.svg" alt="" class="mt-5 mb-2 w-20 lg:w-max" data-aos="flip-left" data-aos-duration="1000" />
         <h1 class="font-jersey text-white text-6xl lg:text-7xl" data-aos="fade-up" data-aos-duration="2000">
             Capture The Flag
         </h1>
     </div>
 
     <div class="w-full flex justify-center gap-2 font-roboto mt-3 px-4">
-        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right"
-            data-aos-duration="2000">
-            <h1 class="text-white text-xs lg:text-lg text-center">Rp. 100.000</h1>
+        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right" data-aos-duration="2000">
+            <h1 class="text-white text-xs lg:text-lg text-center">Rp. 80.000</h1>
         </div>
-        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-up"
-            data-aos-duration="2000">
+        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-up" data-aos-duration="2000">
             <h1 class="text-white text-xs lg:text-lg text-center">
-                SMA / Sederajat
+                Mahasiswa/i aktif jenjang D3/D4/S1
             </h1>
         </div>
-        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right"
-            data-aos-duration="2000">
+        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right" data-aos-duration="2000">
             <h1 class="text-white text-xs lg:text-lg text-center">
                 Max. 3 orang
             </h1>
         </div>
     </div>
 
-    <h1 class="text-center text-white mx-5 text-sm lg:text-base lg:mx-32 mt-5 font-inter" data-aos="fade-up"
-        data-aos-duration="2000">
-        Innovative Informatics Contest (I2C) adalah sebuah sebuah lomba di mana siswa siswi SMA/K sederajat dari seluruh
-        Indonesia yang tergabung dalam satu tim, akan berkompetisi untuk merancang berbagai ide inovatif produk digital
-        yang dapat menyelesaikan suatu
-        masalah. I2C akan diadakan dalam bentuk serangkaian acara.
+    <h1 class="text-center text-white mx-5 text-sm lg:text-lg lg:mx-32 mt-5 font-inter" data-aos="fade-up" data-aos-duration="2000">
+        Capture The Flag (CTF) 2025 merupakan sebuah kompetisi keamanan komputer yang populer di kalangan para hacker dan peneliti keamanan. CTF dirancang untuk menguji dan meningkatkan keterampilan peserta dalam aspek keamanan komputer, pemrograman dan masalah
+        teknis lainnya. Acara ini tergabung dalam rangkaian multi-event pada Informatics Festival (IFest) #13.
     </h1>
 
     <div class="flex justify-center items-center mx-5 lg:mx-10 mt-5 lg:mt-10 -mb-10">
-        <img src="./../img-ctf/element/Bintang.svg" class="w-10 lg:w-20" alt="" data-aos="flip-left"
-            data-aos-duration="2000" />
-        <h1 class="text-white text-center font-jersey mt-2 text-4xl lg:text-5xl mx-2" data-aos="zoom-out"
-            data-aos-duration="2000">
+        <img src="./../img-ctf/element/Bintang.svg" class="w-10 lg:w-20" alt="" data-aos="flip-left" data-aos-duration="2000" />
+        <h1 class="text-white text-center font-jersey mt-2 text-4xl lg:text-5xl mx-2" data-aos="zoom-out" data-aos-duration="2000">
             ABOUT CAPTURE THE FLAG
         </h1>
-        <img src="./../img-ctf/element/Bintang.svg" class="w-10 lg:w-20" alt="" data-aos="flip-right"
-            data-aos-duration="2000" />
+        <img src="./../img-ctf/element/Bintang.svg" class="w-10 lg:w-20" alt="" data-aos="flip-right" data-aos-duration="2000" />
     </div>
 </section>
 <!-- End Slide 1 - Information -->
@@ -320,16 +168,13 @@
 <section class="w-full h-full bg-cover bg-center" style="background-image: url('./../img-ctf/bg/2.svg')">
     <div>
         <div class="absolute -left-1 mt-7 lg:mt-2 scale-x-[-1] ml-10">
-            <img src="./../img-ctf/element/Bintang Kanan.svg" alt="awan" class="w-[100px] lg:w-[180px]"
-                data-aos="flip-left" data-aos-duration="2000" />
+            <img src="./../img-ctf/element/Bintang Kanan.svg" alt="awan" class="w-[100px] lg:w-[180px]" data-aos="flip-left" data-aos-duration="2000" />
         </div>
         <div class="absolute right-0 mt-7 lg:mt-2 mr-10">
-            <img src="./../img-ctf/element/Bintang Kanan.svg" alt="awan" class="w-[100px] lg:w-[180px]"
-                data-aos="flip-right" data-aos-duration="2000" />
+            <img src="./../img-ctf/element/Bintang Kanan.svg" alt="awan" class="w-[100px] lg:w-[180px]" data-aos="flip-right" data-aos-duration="2000" />
         </div>
     </div>
-    <div class="flex justify-center items-center mx-5 lg:mx-10 pt-32 lg:pt-2" data-aos="fade-down"
-        data-aos-duration="2000">
+    <div class="flex justify-center items-center mx-5 lg:mx-10 pt-32 lg:pt-2" data-aos="fade-down" data-aos-duration="2000">
         <img src="./../img-ctf/element/Bintang.svg" class="w-10 lg:w-20" alt="" />
         <div>
             <h1 class="text-center text-white mt-5 text-xs font-khdam">
@@ -341,109 +186,41 @@
         </div>
         <img src="./../img-ctf/element/Bintang.svg" class="w-10 lg:w-20" alt="" />
     </div>
-    <h1 class="text-center text-white mx-5 text-sm lg:text-base lg:mx-36 mt-5 font-inter" data-aos="fade-up"
-        data-aos-duration="2000">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eligendi eum in impedit veniam alias tenetur
-        tempore deserunt fuga iste optio molestiae quibusdam cumque, odio dicta amet. Molestiae vel illo quos distinctio
-        velit eaque nam voluptas harum
-        consequuntur quibusdam molestias ut tempore a cumque, ad assumenda officia vitae autem? Itaque quidem quaerat
-        voluptatem quo, nulla unde eum! Libero odio assumenda quis optio. Molestiae pariatur aliquam, deleniti magni sit
-        ullam voluptas eius
-        voluptatum debitis, dolore ipsum numquam error delectus voluptatem qui culpa. Voluptatum sequi iusto odit
-        voluptas, culpa possimus, unde non ut accusamus eligendi, dicta quasi commodi modi adipisci corrupti nobis!
+    <h1 class="text-center text-white mx-5 text-sm lg:text-lg lg:mx-36 mt-5 font-inter mb-60" data-aos="fade-up" data-aos-duration="2000">
+        Capture the Flag (CTF) merupakan salah satu acara yang diadakan dalam rangkaian acara IFEST #13. Kali ini HIMAFORKA berkolaborasi dengan Komunitas Jogja Cyber Security. Subtema pada kegiatan ini adalah “Hack and Seek: Conquering Layers by Breaking Barriers”,
+        yang mengajak peserta untuk memecahkan serangkaian tantangan tersembunyi di balik berbagai lapisan soal. Subtema ini mencerminkan pentingnya kreativitas dan inovasi dalam menyelesaikan masalah, yang pada akhirnya dapat mendorong kemajuan teknologi
+        secara berkelanjutan. Kompetisi yang diadakan berskala nasional dan ditujukan kepada seluruh mahasiswa/i aktif di Indonesia. Kegiatan ini dilaksanakan secara hybrid, dengan babak penyisihan diadakan secara online dan babak final diselenggarakan
+        secara offline.
+
     </h1>
 
-    <!-- Slider Container -->
-    <div class="flex justify-center items-center min-h-screen -mt-44">
-        <div class="slider-container" data-aos="fade-up" data-aos-duration="2000">
-            <!-- Adjust negative margin here -->
-            <div id="slider" class="slider">
-                <div class="slide" data-index="0">1</div>
-                <div class="slide" data-index="1">2</div>
-                <div class="slide" data-index="2">3</div>
-                <div class="slide" data-index="3">4</div>
-                <div class="slide" data-index="4">5</div>
+    <div>
+        <div class="absolute -left-16 -mt-48 lg:-mt-56 scale-x-[-1]" data-aos="fade-right" data-aos-duration="2000">
+            <img src="./../img-ctf/element/Awan2.svg" alt="awan" class="w-[270px] lg:w-[600px]" />
+        </div>
+        <div class="absolute right-0 -mt-60 lg:-mt-56 " data-aos="fade-right" data-aos-duration="2000">
+            <img src="./../img-ctf/element/Awan2.svg" alt="awan" class="w-[230px] lg:w-[500px]" />
+        </div>
+    </div>
+    </div>
+    <div class="w-full flex justify-center gap-5 font-roboto -mt-20">
+        <a href="https://www.youtube.com/">
+            <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right" data-aos-duration="2000">
+                <h1 class="text-white text-xs lg:text-lg text-center">Poster</h1>
             </div>
-
-            <!-- Navigation Buttons -->
-            <button class="slider-button left" onclick="moveSlider(-1)">
-                <img src="./../img-ctf/element/panah kiri.svg" alt="Left Arrow" />
-            </button>
-            <button class="slider-button right" onclick="moveSlider(1)">
-                <img src="./../img-ctf/element/panah kanan.svg" alt="Right Arrow" />
-            </button>
-        </div>
+        </a>
+        <a href="https://www.youtube.com/">
+            <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-up" data-aos-duration="2000">
+                <h1 class="text-white text-xs lg:text-lg text-center">Rules</h1>
+            </div>
+        </a>
     </div>
-</section>
-
-<script>
-    const slides = document.querySelectorAll('.slide');
-    let currentIndex = 2;
-
-    const SLIDE_DISTANCE = 200; // Adjust slide distance for responsiveness
-
-    function updateSlider() {
-        const totalSlides = slides.length;
-
-        slides.forEach((slide, index) => {
-            const diff = (index - currentIndex + totalSlides) % totalSlides;
-
-            if (diff === 0) {
-                slide.style.transform = 'translateX(0px) scale(1)';
-                slide.style.opacity = '1';
-                slide.style.zIndex = '2';
-            } else if (diff === 1 || diff === totalSlides - 1) {
-                slide.style.transform = `translateX(${diff === 1 ? SLIDE_DISTANCE : -SLIDE_DISTANCE}px) scale(0.9)`;
-                slide.style.opacity = '0.9';
-                slide.style.zIndex = '1';
-            } else {
-                slide.style.transform = `translateX(${diff === 2 ? SLIDE_DISTANCE * 2 : -SLIDE_DISTANCE * 2}px) scale(0.8)`;
-                slide.style.opacity = '0.7';
-                slide.style.zIndex = '0';
-            }
-        });
-    }
-
-    function moveSlider(direction) {
-        const totalSlides = slides.length;
-
-        currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
-
-        updateSlider();
-    }
-
-    updateSlider();
-</script>
-<div>
-    <div class="absolute -left-16 -mt-48 lg:-mt-56 scale-x-[-1]" data-aos="fade-right" data-aos-duration="2000">
-        <img src="./../img-ctf/element/Awan2.svg" alt="awan" class="w-[270px] lg:w-[600px]" />
-    </div>
-    <div class="absolute right-0 -mt-80 pt-20 lg:-mt-56 " data-aos="fade-right" data-aos-duration="2000">
-        <img src="./../img-ctf/element/Awan2.svg" alt="awan" class="w-[280px] lg:w-[500px]" />
-    </div>
-</div>
-</div>
-<div class="w-full flex justify-center gap-5 font-roboto -mt-20">
-    <a href="https://www.youtube.com/">
-        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right"
-            data-aos-duration="2000">
-            <h1 class="text-white text-xs lg:text-lg text-center">Poster</h1>
-        </div>
-    </a>
-    <a href="https://www.youtube.com/">
-        <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-up"
-            data-aos-duration="2000">
-            <h1 class="text-white text-xs lg:text-lg text-center">Rules</h1>
-        </div>
-    </a>
-</div>
 </section>
 
 
 <!-- Start Slide 3 - Tahapan -->
 <section class="w-full h-full bg-center bg-cover" style="background-image: url('./../img-ctf/bg/3.1.1.svg')">
-    <div class="flex justify-center items-center mx-5 lg:mx-10 mt-10 pt-7" data-aos="fade-down"
-        data-aos-duration="2000">
+    <div class="flex justify-center items-center mx-5 lg:mx-10 pt-7" data-aos="fade-down" data-aos-duration="2000">
         <img src="./../img-ctf/element/Bintang.svg" class="w-10 lg:w-20" alt="" />
         <div>
             <h1 class="text-center text-white mt-5 text-xs font-khdam">
@@ -461,30 +238,25 @@
 
     <div>
         <div class="absolute right-0 mt-8 lg:mt-24 z-0">
-            <img src="./../img-ctf/element/awan.svg" alt="awan" class="w-[180px] lg:w-[650px]" data-aos="fade-up"
-                data-aos-duration="2000" />
+            <img src="./../img-ctf/element/awan.svg" alt="awan" class="w-[180px] lg:w-[650px]" data-aos="fade-up" data-aos-duration="2000" />
         </div>
         <div class="absolute left-0 scale-x-[-1]">
-            <img src="./../img-ctf/element/awan.svg" alt="awan" class="w-[150px] lg:w-[500px]" data-aos="fade-up"
-                data-aos-duration="2000" />
+            <img src="./../img-ctf/element/awan.svg" alt="awan" class="w-[150px] lg:w-[500px]" data-aos="fade-up" data-aos-duration="2000" />
         </div>
     </div>
 
     <div>
         <div class="absolute right-0 mt-16 lg:mt-36 z-0">
-            <img src="./../img-ctf/element/ufo.svg" alt="awan" class="w-[80px] lg:w-[350px] mr-14 lg:mr-56"
-                data-aos="fade-down" data-aos-duration="3000" />
+            <img src="./../img-ctf/element/ufo.svg" alt="awan" class="w-[80px] lg:w-[350px] mr-14 lg:mr-56" data-aos="fade-down" data-aos-duration="3000" />
         </div>
         <div class="absolute left-0 scale-x-[1] ml-8 lg:ml-60">
-            <img src="./../img-ctf/element/ufo.svg" alt="awan" class="w-[120px] lg:w-[300px] mt-6 lg:mt-6"
-                data-aos="fade-down" data-aos-duration="3000" />
+            <img src="./../img-ctf/element/ufo.svg" alt="awan" class="w-[120px] lg:w-[300px] mt-6 lg:mt-6" data-aos="fade-down" data-aos-duration="3000" />
         </div>
     </div>
 
     <!-- Start - Ketentuan-->
     <div class="justify-center items-center flex-col flex mt-5 lg:mt-10">
-        <img src="./../img-ctf/element/icon bulan.svg" alt="" class="w-28 lg:w-52 z-10 mr-16" data-aos="flip-left"
-            data-aos-duration="3000" />
+        <img src="./../img-ctf/element/icon bulan.svg" alt="" class="w-28 lg:w-52 z-10 mr-16" data-aos="flip-left" data-aos-duration="3000" />
 
         <!-- Start - Ketentuan Mobile -->
         <div class="lg:hidden mt-5">
@@ -503,48 +275,59 @@
                         <div class="font-inter mt-2 text-xs">
                             <ul class="space-y-2">
                                 <li>
-                                    1. Setiap peserta harus merupakan siswa aktif SMA/sederajat.
+                                    1. Peserta adalah <span class=font-interBold>mahasiswa/i aktif jenjang
+                                        D3/D4/S1</span> dari perguruan tinggi di <span class=font-interBold>seluruh
+                                        Indonesia</span>.
                                 </li>
                                 <li>
-                                    2. Setiap peserta harus tergabung dalam tim yang beranggotak tiga (3) orang.
+                                    2. Dalam satu tim terdiri dari maksimal 3 (tiga) peserta yang berasal dari perguruan tinggi yang sama.
                                 </li>
                                 <li>
-                                    3. Setiap peserta hanya boleh terdaftar dalam satu (1) tim
+                                    3. Peserta hanya <span class=font-interBold>diperbolehkan terdaftar dalam 1 tim
+                                        dalam kompetisi</span>.
                                 </li>
                                 <li>
-                                    4. Setiap anggota tim harus berasal dari sekolah yang sama.
+                                    4. Peserta yang diperbolehkan mengikuti Capture the Flag ini adalah peserta yang belum pernah memenangkan perlombaan CTF bergengsi tingkat nasional/internasional. Apabila dari suatu tim terdapat peserta yang pernah menjadi juara, maka peserta tersebut
+                                    harus diganti.
                                 </li>
                                 <li>
-                                    5. Setiap tim harus memenuhi prosedur pendaftaran yang telah ditetapkan.
+                                    5. Melakukan pendaftaran online melalui <a href="https://bit.ly/Pendaftaran-CTF2025" class="text-blue-500">https://bit.ly/Pendaftaran-CTF2025</a> pendaftaran akan dibuka mulai dari <span class=font-interBold>Senin, 24 Februari 2025</span>                                    sampai dengan <span class=font-interBold>Rabu, 30 April 2025 pukul 23.59 WIB</span>.
                                 </li>
                                 <li>
-                                    6. Seriap tim tidak boleh mengganti anggota yang sudah terdaftar pada formular
-                                    peserta.
+                                    6. Melampirkan bukti upload twibbon di akun instagram, follow akun @ifest_uajy pada formulir pendaftaran.
                                 </li>
                                 <li>
-                                    7. Setiap tim harus membayar biaya pendaftaran lomba sebesar Rp 100.000.00
+                                    7. Biaya pendaftaran 1 tim sebesar Rp 80.000,00 melalui : <br> Nama : Alexander Wongso <br> Bank : BCA <br> No Rekening : 8305549980
                                 </li>
                                 <li>
-                                    8. Pengembalian (refund) biaya pendaftaran tidak dapat dilakukan dalam keadaan apa
-                                    pun.
+                                    8. Membuat akun CTFd untuk masuk ke platform perlombaan.
                                 </li>
                                 <li>
-                                    9. Setiap tim yang lolos ke tahap Expo wajib berangkat ke Universitas Atma Jaya
-                                    Yogyakarta.
+                                    9. Peserta yang masuk dalam babak final wajib hadir dalam rangkaian acara final secara luring.
                                 </li>
                                 <li>
-                                    10. Setiap tim yang lolos ke tahap Expo wajib didampingi oleh guru pembimbing yang
-                                    berasal dari sekolah yang sama.
+                                    10. Segala bentuk akomodasi dan transportasi menjadi tanggung jawab masing-masing peserta.
                                 </li>
                                 <li>
-                                    11. Setiap tim hanya boleh didampingi oleh satu (1) guru pembimbing.
+                                    11. Panitia berhak mengeliminasi peserta yang tidak memenuhi ketentuan peserta dan tata tertib kegiatan .
                                 </li>
                                 <li>
-                                    12. Setiap guru dapat membimbing lebih dari satu (1) tim, selama tim berasal dari
-                                    sekolah yang sama.
+                                    12. Segala bentuk kecurangan atau pelanggaran tata tertib dalam kompetisi tidak diberikan toleransi apapun dan panitia berhak mencabut gelar juara dan mendiskualifikasi peserta.
                                 </li>
                                 <li>
-                                    13. Setiap sekolah bebas untuk mendaftarkan lebih dari satu (1) tim.
+                                    13. Keputusan juri dari panitia Capture the Flag (CTF) 2025 tidak dapat diganggu gugat.
+                                </li>
+                                <li>
+                                    14. Peserta yang berhak kompetisi adalah peserta yang sudah terverifikasi oleh panitia.
+                                </li>
+                                <li>
+                                    15. Peserta yang sudah terverifikasi tidak dapat digantikan atau diwakilkan oleh orang lain selama perlombaan.
+                                </li>
+                                <li>
+                                    16. Peserta diharapkan selalu memantau update terbaru melalui sosial media @ifest_uajy terkait pengumuman atau informasi tambahan dari panitia.
+                                </li>
+                                <li>
+                                    17. Setiap peserta Capture the Flag (CTF) 2025 wajib membaca, memahami, dan mengikuti seluruh syarat dan ketentuan yang tercantum dalam rulebook.
                                 </li>
                             </ul>
                         </div>
@@ -560,23 +343,25 @@
         " data-aos="fade-right" data-aos-duration="2000" data-aos-delay="150">
                     <div class="p-5">
                         <h1 class="text-center font-jersey25 text-3xl text-[#2D678C]">
-                            KETENTUAN KARYA
+                            KETENTUAN TECHNICAL MEETING
                         </h1>
                         <div class="font-inter mt-2 text-xs">
                             <ul class="space-y-2">
-                                <li>1. Setiap karya harus berkaitan dengan Teknologi Informasi.</li>
                                 <li>
-                                    2. Setiap karya harus sesuai dengan teman yang diberikan.
-                                </li>
-                                <li>3. Setiap Karya harus merupakan ide orisinal peserta.</li>
-                                <li>
-                                    4. Setiap karya tidak boleh menyinggung elemen yang berkaitan dengan etnis, suku,
-                                    agama, tindakan perundangan hingga SARA.
+                                    1. Technical meeting diadakan <span class=font-interBold>secara online via
+                                        Zoom Meeting pada</span> : <span class=font-interBold> <br>Jumat, 2 Mei
+                                        2025</span> untuk <span class=font-interBold>Babak Penyisihan</span> <br> <span class=font-interBold>Selasa, 13 Mei 2025</span> untuk <span class=font-interBold>Babak Final</span>, setelah pengumuman finalis (15
+                                    tim dengan nilai tertinggi).
                                 </li>
                                 <li>
-                                    5. Setiap karya belum pernah dimasukkan dalam lomba yang sejenis sebelumnya.
+                                    2. Pada Technical Meeting akan diadakan tanya jawab terkait ketentuan dan alur pelaksanaan kompetisi babak final Capture The Flag 2025.
                                 </li>
-
+                                <li>
+                                    3. Setiap tim yang dinyatakan lolos ke tahap final wajib mengirimkan setidaknya 1 (satu) perwakilan untuk mengikuti Technical Meeting.
+                                </li>
+                                <li>
+                                    4. Apabila suatu tim tidak mengirimkan perwakilan untuk mengikuti Technical Meeting tersebut, maka tim tersebut dianggap menyetujui semua keputusan yang diambil pada saat Technical Meeting berlangsung.
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -589,7 +374,7 @@
         <!-- Start - Ketentuan Desktop-->
         <div class="hidden lg:block mt-10">
             <div class="flex items-center space-x-10">
-                <div class="bg-white w-[40vw] h-auto rounded-xl" style="
+                <div class="bg-white w-[40vw] h-auto rounded-xl  z-10 max-h-[690px] overflow-y-scroll" style="
           box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2),
             0 4px 25px rgba(255, 255, 255, 0.15),
             0 -4px 25px rgba(255, 255, 255, 0.15),
@@ -603,48 +388,59 @@
                         <div class="font-inter mt-2 text-sm">
                             <ul class="space-y-2">
                                 <li>
-                                    1. Setiap peserta harus merupakan siswa aktif SMA/sederajat.
+                                    1. Peserta adalah <span class=font-interBold>mahasiswa/i aktif jenjang
+                                        D3/D4/S1</span> dari perguruan tinggi di <span class=font-interBold>seluruh
+                                        Indonesia</span>.
                                 </li>
                                 <li>
-                                    2. Setiap peserta harus tergabung dalam tim yang beranggotak tiga (3) orang.
+                                    2. Dalam satu tim terdiri dari maksimal 3 (tiga) peserta yang berasal dari perguruan tinggi yang sama.
                                 </li>
                                 <li>
-                                    3. Setiap peserta hanya boleh terdaftar dalam satu (1) tim
+                                    3. Peserta hanya <span class=font-interBold>diperbolehkan terdaftar dalam 1 tim
+                                        dalam kompetisi</span>.
                                 </li>
                                 <li>
-                                    4. Setiap anggota tim harus berasal dari sekolah yang sama.
+                                    4. Peserta yang diperbolehkan mengikuti Capture the Flag ini adalah peserta yang belum pernah memenangkan perlombaan CTF bergengsi tingkat nasional/internasional. Apabila dari suatu tim terdapat peserta yang pernah menjadi juara, maka peserta tersebut
+                                    harus diganti.
                                 </li>
                                 <li>
-                                    5. Setiap tim harus memenuhi prosedur pendaftaran yang telah ditetapkan.
+                                    5. Melakukan pendaftaran online melalui <a href="https://bit.ly/Pendaftaran-CTF2025" class="text-blue-500">https://bit.ly/Pendaftaran-CTF2025</a> pendaftaran akan dibuka mulai dari <span class=font-interBold>Senin, 24 Februari 2025</span>                                    sampai dengan <span class=font-interBold>Rabu, 30 April 2025 pukul 23.59 WIB</span>.
                                 </li>
                                 <li>
-                                    6. Seriap tim tidak boleh mengganti anggota yang sudah terdaftar pada formular
-                                    peserta.
+                                    6. Melampirkan bukti upload twibbon di akun instagram, follow akun @ifest_uajy pada formulir pendaftaran.
                                 </li>
                                 <li>
-                                    7. Setiap tim harus membayar biaya pendaftaran lomba sebesar Rp 100.000.00
+                                    7. Biaya pendaftaran 1 tim sebesar Rp 80.000,00 melalui : <br> Nama : Alexander Wongso <br> Bank : BCA <br> No Rekening : 8305549980
                                 </li>
                                 <li>
-                                    8. Pengembalian (refund) biaya pendaftaran tidak dapat dilakukan dalam keadaan apa
-                                    pun.
+                                    8. Membuat akun CTFd untuk masuk ke platform perlombaan.
                                 </li>
                                 <li>
-                                    9. Setiap tim yang lolos ke tahap Expo wajib berangkat ke Universitas Atma Jaya
-                                    Yogyakarta.
+                                    9. Peserta yang masuk dalam babak final wajib hadir dalam rangkaian acara final secara luring.
                                 </li>
                                 <li>
-                                    10. Setiap tim yang lolos ke tahap Expo wajib didampingi oleh guru pembimbing yang
-                                    berasal dari sekolah yang sama.
+                                    10. Segala bentuk akomodasi dan transportasi menjadi tanggung jawab masing-masing peserta.
                                 </li>
                                 <li>
-                                    11. Setiap tim hanya boleh didampingi oleh satu (1) guru pembimbing.
+                                    11. Panitia berhak mengeliminasi peserta yang tidak memenuhi ketentuan peserta dan tata tertib kegiatan .
                                 </li>
                                 <li>
-                                    12. Setiap guru dapat membimbing lebih dari satu (1) tim, selama tim berasal dari
-                                    sekolah yang sama.
+                                    12. Segala bentuk kecurangan atau pelanggaran tata tertib dalam kompetisi tidak diberikan toleransi apapun dan panitia berhak mencabut gelar juara dan mendiskualifikasi peserta.
                                 </li>
                                 <li>
-                                    13. Setiap sekolah bebas untuk mendaftarkan lebih dari satu (1) tim.
+                                    13. Keputusan juri dari panitia Capture the Flag (CTF) 2025 tidak dapat diganggu gugat.
+                                </li>
+                                <li>
+                                    14. Peserta yang berhak kompetisi adalah peserta yang sudah terverifikasi oleh panitia.
+                                </li>
+                                <li>
+                                    15. Peserta yang sudah terverifikasi tidak dapat digantikan atau diwakilkan oleh orang lain selama perlombaan.
+                                </li>
+                                <li>
+                                    16. Peserta diharapkan selalu memantau update terbaru melalui sosial media @ifest_uajy terkait pengumuman atau informasi tambahan dari panitia.
+                                </li>
+                                <li>
+                                    17. Setiap peserta Capture the Flag (CTF) 2025 wajib membaca, memahami, dan mengikuti seluruh syarat dan ketentuan yang tercantum dalam rulebook.
                                 </li>
                             </ul>
                         </div>
@@ -660,22 +456,25 @@
         " data-aos="fade-right" data-aos-duration="2000" data-aos-delay="150">
                     <div class="flex flex-col p-5">
                         <h1 class="text-center font-jersey25 text-3xl text-[#2D678C]">
-                            KETENTUAN KARYA
+                            KETENTUAN TECHNICAL MEETING
                         </h1>
 
                         <div class="font-inter mt-2 text-sm">
                             <ul class="space-y-2">
-                                <li>1. Karya desain berupa situs web desktop.</li>
                                 <li>
-                                    2. Setiap karya harus sesuai dengan teman yang diberikan.
-                                </li>
-                                <li>3. Setiap Karya harus merupakan ide orisinal peserta.</li>
-                                <li>
-                                    4. Setiap karya tidak boleh menyinggung elemen yang berkaitan dengan etnis, suku,
-                                    agama, tindakan perundangan hingga SARA.
+                                    1. Technical meeting diadakan <span class=font-interBold>secara online via
+                                        Zoom Meeting pada</span> : <span class=font-interBold> <br>Jumat, 2 Mei
+                                        2025</span> untuk <span class=font-interBold>Babak Penyisihan</span> <br> <span class=font-interBold>Selasa, 13 Mei 2025</span> untuk <span class=font-interBold>Babak Final</span>, setelah pengumuman finalis (15
+                                    tim dengan nilai tertinggi).
                                 </li>
                                 <li>
-                                    5. Setiap karya belum pernah dimasukkan dalam lomba yang sejenis sebelumnya.
+                                    2. Pada Technical Meeting akan diadakan tanya jawab terkait ketentuan dan alur pelaksanaan kompetisi babak final Capture The Flag 2025.
+                                </li>
+                                <li>
+                                    3. Setiap tim yang dinyatakan lolos ke tahap final wajib mengirimkan setidaknya 1 (satu) perwakilan untuk mengikuti Technical Meeting.
+                                </li>
+                                <li>
+                                    4. Apabila suatu tim tidak mengirimkan perwakilan untuk mengikuti Technical Meeting tersebut, maka tim tersebut dianggap menyetujui semua keputusan yang diambil pada saat Technical Meeting berlangsung.
                                 </li>
                             </ul>
                         </div>
@@ -689,20 +488,17 @@
     <!-- End - Ketentuan-->
     <div class="w-full flex justify-center gap-5 font-roboto mt-7">
         <a href="#poster">
-            <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right"
-                data-aos-duration="2000">
+            <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right" data-aos-duration="2000">
                 <h1 class="text-white text-xs lg:text-lg text-center">Poster</h1>
             </div>
         </a>
         <a href="#daftar">
-            <div class="px-8 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-up"
-                data-aos-duration="2000">
+            <div class="px-8 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-up" data-aos-duration="2000">
                 <h1 class="text-white text-xs lg:text-lg text-center">Daftar ></h1>
             </div>
         </a>
         <a href="#rules">
-            <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-down"
-                data-aos-duration="2000">
+            <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-down" data-aos-duration="2000">
                 <h1 class="text-white text-xs lg:text-lg text-center">Peraturan</h1>
             </div>
         </a>
@@ -713,8 +509,7 @@
 <section class="w-full h-full py-5 bg-cover bg-center" style="background-image: url('./../img-ctf/bg/3.1.2.svg')">
     <div class="lg:block block">
         <div class="flex items-center justify-center p-5 lg:mt-10">
-            <img src="./../img-ctf/element/Flag.svg" alt="" class="w-20 lg:w-32 z-0" data-aos="flip-right"
-                data-aos-duration="2000" />
+            <img src="./../img-ctf/element/Flag.svg" alt="" class="w-20 lg:w-32 z-0" data-aos="flip-right" data-aos-duration="2000" />
         </div>
     </div>
     <div class="flex justify-center items-center mx-5 lg:mx-10 relative z-10  transform translate-y-full mb-52 -mt-40">
@@ -735,12 +530,10 @@
 
     <div>
         <div class="absolute right-0 mt-40 lg:-mt-56 z-0">
-            <img src="./../img-ctf/element/Rope.svg " alt="rope" class="w-[70px] lg:w-[200px]" data-aos="fade-right"
-                data-aos-duration="2000" />
+            <img src="./../img-ctf/element/Rope.svg " alt="rope" class="w-[70px] lg:w-[200px]" data-aos="fade-right" data-aos-duration="2000" />
         </div>
         <div class="absolute left-0 scale-x-[-1] mt-96 lg:-mt-56">
-            <img src="./../img-ctf/element/Rope.svg" alt="rope" class="w-[70px] lg:w-[200px]" data-aos="fade-right"
-                data-aos-duration="2000" />
+            <img src="./../img-ctf/element/Rope.svg" alt="rope" class="w-[70px] lg:w-[200px]" data-aos="fade-right" data-aos-duration="2000" />
         </div>
     </div>
     <!-- Start - Timeline -->
@@ -749,12 +542,10 @@
 
     <div class="block lg:hidden p-5">
         <div class="mx-5 items-center justify-center flex flex-col gap-4">
-            <div class="flex items-center justify-center relative mr-10" data-aos="flip-left" data-aos-duration="2000"
-                data-aos-delay="100">
+            <div class="flex items-center justify-center relative mr-10" data-aos="flip-left" data-aos-duration="2000" data-aos-delay="100">
                 <div class="absolute -top-1 bg-[#EDB108] w-32 h-3 rounded-full drop-shadow-lg z-0"></div>
                 <div class="border-4 border-[#EDB108] w-auto h-auto p-3 rounded-xl">
-                    <div
-                        class="bg-[white] p-5 w-56 rounded-xl flex flex-col items-center justify-center font-khdam text-center mt-4">
+                    <div class="bg-[white] p-5 w-56 rounded-xl flex flex-col items-center justify-center font-khdam text-center mt-4">
                         <span class="text-sm">24 Feb - 30 April 2025</span>
                         <div class="py-2 flex gap-2 items-center">
                             <img src="./../img-ctf/icon/icon gform.svg" class="w-8" alt="" />
@@ -768,12 +559,10 @@
                 <div class="absolute -bottom-1 bg-[#EDB108] w-32 h-3 rounded-full drop-shadow-lg"></div>
             </div>
             <img src="./../img-ctf/element/panah.svg" class="w-16 py-3 rotate-45 " alt="" />
-            <div class="flex items-center justify-center relative ml-10 " data-aos="flip-right" data-aos-duration="2000"
-                data-aos-delay="100">
+            <div class="flex items-center justify-center relative ml-10 " data-aos="flip-right" data-aos-duration="2000" data-aos-delay="100">
                 <div class="absolute -top-1 bg-[#E98F06] w-32 h-3 rounded-full drop-shadow-lg"></div>
                 <div class="border-4 border-[#E98F06] w-auto h-auto p-3 rounded-xl">
-                    <div
-                        class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
+                    <div class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
                         <span class="text-sm">2 Mei 2025</span>
                         <div class="py-2 flex gap-2 items-center">
                             <img src="./../img-ctf/icon/icon zoom.svg" class="w-8" alt="" />
@@ -787,12 +576,10 @@
                 <div class="absolute -bottom-1 bg-[#E98F06] w-32 h-3 rounded-full drop-shadow-lg"></div>
             </div>
             <img src="./../img-ctf/element/panah.svg" class="w-16 py-3 -rotate-45 scale-x-[-1] " alt="" />
-            <div class="flex items-center justify-center relative mr-10  mb-4" data-aos="flip-left"
-                data-aos-duration="2000" data-aos-delay="100">
+            <div class="flex items-center justify-center relative mr-10  mb-4" data-aos="flip-left" data-aos-duration="2000" data-aos-delay="100">
                 <div class="absolute -top-1 bg-[#DD5017] w-32 h-3 rounded-full drop-shadow-lg"></div>
                 <div class="border-4 border-[#DD5017] w-auto h-auto p-3 rounded-xl">
-                    <div
-                        class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
+                    <div class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
                         <span class="text-sm">9 Mei 2025</span>
                         <div class="py-2 flex gap-2 items-center">
                             <img src="./../img-ctf/icon/icon browser.svg" class="w-8" alt="" />
@@ -806,12 +593,10 @@
                 <div class="absolute -bottom-1 bg-[#DD5017] w-32 h-3 rounded-full drop-shadow-lg"></div>
             </div>
             <img src="./../img-ctf/element/panah.svg" class="w-16 py-3 rotate-45 " alt=" " />
-            <div class="flex items-center justify-center relative ml-10  mb-4" data-aos="flip-right"
-                data-aos-duration="2000" data-aos-delay="100">
+            <div class="flex items-center justify-center relative ml-10  mb-4" data-aos="flip-right" data-aos-duration="2000" data-aos-delay="100">
                 <div class="absolute -top-1 bg-[#6C1F00] w-32 h-3 rounded-full drop-shadow-lg"></div>
                 <div class="border-4 border-[#6C1F00] w-auto h-auto p-3 rounded-xl">
-                    <div
-                        class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
+                    <div class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
                         <span class=" text-sm ">11 Mei 2025</span>
                         <div class=" py-2 flex gap-2 items-center ">
                             <img src="./../img-ctf/icon/icon browser.svg" class=" w-8 " alt=" " />
@@ -824,14 +609,11 @@
                 </div>
                 <div class=" absolute -bottom-1 bg-[#6C1F00] w-32 h-3 rounded-full drop-shadow-lg "></div>
             </div>
-            <img src="./../img-ctf/element/panah.svg"
-                class="w-16 py-5 -rotate-45 scale-x-[-1] slideUp transform translate-y-full -mt-24" alt="" />
-            <div class="flex items-center justify-center relative mr-10 slideUp transform translate-y-full mt-20"
-                data-aos="flip-left" data-aos-duration="2000" data-aos-delay="100">
+            <img src="./../img-ctf/element/panah.svg" class="w-16 py-5 -rotate-45 scale-x-[-1] slideUp transform translate-y-full -mt-24" alt="" />
+            <div class="flex items-center justify-center relative mr-10 slideUp transform translate-y-full mt-20" data-aos="flip-left" data-aos-duration="2000" data-aos-delay="100">
                 <div class="absolute -top-1 bg-[#CE178F] w-32 h-3 rounded-full drop-shadow-lg"></div>
                 <div class="border-4 border-[#CE178F] w-auto h-auto p-3 rounded-xl">
-                    <div
-                        class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
+                    <div class="bg-[white] p-5 w-48 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
                         <span class="text-sm">13 Mei 2025</span>
                         <div class="py-2 flex gap-2 items-center">
                             <img src="./../img-ctf/icon/icon zoom.svg" class="w-8" alt="" />
@@ -844,14 +626,11 @@
                 </div>
                 <div class="absolute -bottom-1 bg-[#CE178F] w-32 h-3 rounded-full drop-shadow-lg"></div>
             </div>
-            <img src="./../img-ctf/element/panah.svg"
-                class="w-16 py-5 rotate-45 slideUp transform translate-y-full -mt-20" alt="" />
-            <div class="flex items-center justify-center relative ml-10 slideUp transform translate-y-full mt-24"
-                data-aos="flip-right" data-aos-duration="2000" data-aos-delay="100">
+            <img src="./../img-ctf/element/panah.svg" class="w-16 py-5 rotate-45 slideUp transform translate-y-full -mt-20" alt="" />
+            <div class="flex items-center justify-center relative ml-10 slideUp transform translate-y-full mt-24" data-aos="flip-right" data-aos-duration="2000" data-aos-delay="100">
                 <div class="absolute -top-1 bg-[#A33EA1] w-32 h-3 rounded-full drop-shadow-lg"></div>
                 <div class="border-4 border-[#A33EA1] w-auto h-auto p-3 rounded-xl">
-                    <div
-                        class="bg-[white] p-5 w-56 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
+                    <div class="bg-[white] p-5 w-56 rounded-xl flex flex-col items-center justify-center font-khdam text-center">
                         <span class="text-sm">24 Mei 2025</span>
                         <div class="py-2 flex gap-2 items-center">
                             <img src="./../img-ctf/icon/icon geedung.svg" class="w-6" alt="" />
@@ -874,8 +653,7 @@
     <!-- Start - Desktop -->
     <div class=" hidden lg:block mt-10 ">
         <div class=" flex items-center justify-center gap-3 ">
-            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 1 "
-                data-aos="flip-right" data-aos-duration="2000" data-aos-delay="100">
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 1 " data-aos="flip-right" data-aos-duration="2000" data-aos-delay="100">
                 <div class=" absolute -top-3 bg-[#EDB108] w-48 h-7 rounded-full drop-shadow-lg "></div>
                 <div class=" border-4 border-[#EDB108] w-72 h-auto p-7 rounded-3xl ">
                     <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
@@ -893,8 +671,7 @@
                 <div class=" absolute -bottom-3 bg-[#EDB108] w-48 h-7 rounded-full drop-shadow-lg "></div>
             </div>
             <img src=" ./../img-ctf/element/panah.svg " class=" w-24 fadeIn " style=" --fadeDuration: 1 " alt=" " />
-            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 2 "
-                data-aos="flip-left" data-aos-duration="2000" data-aos-delay="200">
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 2 " data-aos="flip-left" data-aos-duration="2000" data-aos-delay="200">
                 <div class=" absolute -top-3 bg-[#E98F06] w-48 h-7 rounded-full drop-shadow-lg "></div>
                 <div class=" border-4 border-[#E98F06] w-72 h-auto p-7 rounded-3xl ">
                     <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
@@ -912,8 +689,7 @@
                 <div class=" absolute -bottom-3 bg-[#E98F06] w-48 h-7 rounded-full drop-shadow-lg "></div>
             </div>
             <img src=" ./../img-ctf/element/panah.svg " class=" w-24 fadeIn " style=" --fadeDuration: 2 " alt=" " />
-            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 3 "
-                data-aos="flip-right" data-aos-duration="2000" data-aos-delay="300">
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 3 " data-aos="flip-right" data-aos-duration="2000" data-aos-delay="300">
                 <div class=" absolute -top-3 bg-[#DD5017] w-48 h-7 rounded-full drop-shadow-lg "></div>
                 <div class=" border-4 border-[#DD5017] w-72 h-auto p-7 rounded-3xl ">
                     <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
@@ -933,8 +709,7 @@
         </div>
         <div class=" py-4 "></div>
         <div class=" flex items-center justify-center gap-3 mt-5 ">
-            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 6 "
-                data-aos="flip-left" data-aos-duration="2000" data-aos-delay="400">
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 6 " data-aos="flip-left" data-aos-duration="2000" data-aos-delay="400">
                 <div class=" absolute -top-3 bg-[#A33EA1] w-48 h-7 rounded-full drop-shadow-lg "></div>
                 <div class=" border-4 border-[#A33EA1] w-72 h-auto p-7 rounded-3xl ">
                     <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
@@ -953,8 +728,7 @@
             </div>
             <img src=" ./../img-ctf/element/panah.svg " class=" w-24 scale-x-[-1] fadeIn " style=" --fadeDuration:
                 4 " alt=" " />
-            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 5 "
-                data-aos="flip-right" data-aos-duration="2000" data-aos-delay="500">
+            <div class=" flex items-center justify-center relative fadeIn " style=" --fadeDuration: 5 " data-aos="flip-right" data-aos-duration="2000" data-aos-delay="500">
                 <div class=" absolute -top-3 bg-[#CE178F] w-48 h-7 rounded-full drop-shadow-lg "></div>
                 <div class=" border-4 border-[#CE178F] w-72 h-auto p-7 rounded-3xl ">
                     <div class=" bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam
@@ -971,14 +745,11 @@
                 </div>
                 <div class=" absolute -bottom-3 bg-[#CE178F] w-48 h-7 rounded-full drop-shadow-lg "></div>
             </div>
-            <img src="./../img-ctf/element/panah.svg" class="w-24 scale-x-[-1] fadeIn" style="--fadeDuration: 3"
-                alt="" />
-            <div class="flex items-center justify-center relative fadeIn" style="--fadeDuration: 4" data-aos="flip-left"
-                data-aos-duration="2000" data-aos-delay="500">
+            <img src="./../img-ctf/element/panah.svg" class="w-24 scale-x-[-1] fadeIn" style="--fadeDuration: 3" alt="" />
+            <div class="flex items-center justify-center relative fadeIn" style="--fadeDuration: 4" data-aos="flip-left" data-aos-duration="2000" data-aos-delay="500">
                 <div class="absolute -top-3 bg-[#6C1F00] w-48 h-7 rounded-full drop-shadow-lg"></div>
                 <div class="border-4 border-[#6C1F00] w-72 h-auto p-7 rounded-3xl">
-                    <div
-                        class="bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam text-center">
+                    <div class="bg-[white] p-5 h-44 rounded-3xl flex flex-col items-center justify-center font-khdam text-center">
                         <span>11 Mei 2025</span>
                         <div class=" py-2 flex gap-2 items-center ">
                             <img src="./../img-ctf/icon/icon browser.svg" class=" w-8 " alt=" " />
@@ -1001,8 +772,7 @@
 </section>
 
 <!-- Slide 6 - Juara -->
-<section class=" w-full h-full lg:h-screen bg-cover bg-center "
-    style=" background-image: url( './../img-ctf/bg/4.svg' ) ">
+<section class=" w-full h-full lg:h-screen bg-cover bg-center " style=" background-image: url( './../img-ctf/bg/4.svg' ) ">
     <div class=" flex justify-center items-center mx-5 lg:mx-10 " data-aos="fade-up" data-aos-duration="2000">
         <img src="./../img-ctf/element/Bintang.svg" class=" w-10 lg:w-20 mt-32" alt=" " />
         <div class=" text-black mt-32 ">
@@ -1021,12 +791,10 @@
 
     <div>
         <div class="absolute right-0 mt-60 lg:mt-1 z-0">
-            <img src="./../img-ctf/element/Rope2.svg " alt="rope" class="w-[70px] lg:w-[100px]" data-aos="flip-right"
-                data-aos-duration="2000" data-aos-delay="150" />
+            <img src="./../img-ctf/element/Rope2.svg " alt="rope" class="w-[70px] lg:w-[100px]" data-aos="flip-right" data-aos-duration="2000" data-aos-delay="150" />
         </div>
         <div class="absolute left-0 scale-x-[-1] mt-64 lg:mt-1">
-            <img src="./../img-ctf/element/Rope2.svg" alt="rope" class="w-[70px] lg:w-[100px]" data-aos="flip-left"
-                data-aos-duration="2000" data-aos-delay="150" />
+            <img src="./../img-ctf/element/Rope2.svg" alt="rope" class="w-[70px] lg:w-[100px]" data-aos="flip-left" data-aos-duration="2000" data-aos-delay="150" />
         </div>
     </div>
 
@@ -1157,11 +925,9 @@
 
     <!-- End - Juara-->
 </section>
-<section class=" w-full h-[400px] bg-cover bg-center flex flex-col items-center justify-center "
-    style=" background-image: url( './../img-ctf/bg/6.svg' ) ">
+<section class=" w-full h-[400px] bg-cover bg-center flex flex-col items-center justify-center " style=" background-image: url( './../img-ctf/bg/6.svg' ) ">
     <div class=" flex justify-center items-center mx-5 lg:mx-10 ">
-        <img src=" ./../img-ctf/element/Bintang.svg " class=" w-10 lg:w-20 " alt=" " data-aos="flip-left"
-            data-aos-duration="2000" />
+        <img src=" ./../img-ctf/element/Bintang.svg " class=" w-10 lg:w-20 " alt=" " data-aos="flip-left" data-aos-duration="2000" />
         <div class=" text-black text-center " data-aos="zoom-in" data-aos-duration="3000">
             <h1 class=" text-xs font-khdam ">IFEST #13 : HEROES OF INNOVATION</h1>
             <h1 class=" font-jersey text-4xl lg:text-5xl mx-2 mt-3 ">
@@ -1172,13 +938,11 @@
                 <br />Ayo, jangan lewatkan kesempatan untuk menunjukkan kreativitas dan keahlianmu di IFEST #13! 🌐
             </h1>
         </div>
-        <img src=" ./../img-ctf/element/Bintang.svg " class=" w-10 lg:w-20 " alt=" " data-aos="flip-right"
-            data-aos-duration="2000" />
+        <img src=" ./../img-ctf/element/Bintang.svg " class=" w-10 lg:w-20 " alt=" " data-aos="flip-right" data-aos-duration="2000" />
     </div>
     <div class=" w-full flex justify-center gap-5 font-roboto mt-10 ">
         <a href=" #daftar ">
-            <div class=" px-8 bg-[#F4347F] rounded-3xl h-10 grid place-items-center " data-aos="fade-up"
-                data-aos-duration="2000">
+            <div class=" px-8 bg-[#F4347F] rounded-3xl h-10 grid place-items-center " data-aos="fade-up" data-aos-duration="2000">
                 <h1 class=" text-white text-xs lg:text-lg text-center ">Daftar ></h1>
             </div>
         </a>
@@ -1191,12 +955,10 @@
 <section class=" w-full h-screen bg-cover bg-center " style=" background-image: url( './../img-ctf/bg/7.svg' ) ">
     <div>
         <div class="absolute -left-16 mt-48 scale-x-[-1]">
-            <img src="./../img-ctf/element/awan.svg" alt="awan" class="w-[250px] lg:w-[700px]" data-aos="fade-right"
-                data-aos-duration="2000" />
+            <img src="./../img-ctf/element/awan.svg" alt="awan" class="w-[250px] lg:w-[700px]" data-aos="fade-right" data-aos-duration="2000" />
         </div>
         <div class="absolute right-0 mt-64 lg:mt-52">
-            <img src="./../img-ctf/element/awan.svg" alt="awan" class="w-[150px] lg:w-[500px]" data-aos="fade-down"
-                data-aos-duration="2000" />
+            <img src="./../img-ctf/element/awan.svg" alt="awan" class="w-[150px] lg:w-[500px]" data-aos="fade-down" data-aos-duration="2000" />
         </div>
     </div>
     <div class=" flex justify-center items-center mx-5 lg:mx-10 " data-aos="fade-down" data-aos-duration="2000">
@@ -1209,8 +971,7 @@
                 CONTACT PERSON
             </h1>
             <h1 class=" text-center mt-2 text-sm lg:text-base font-khdam ">
-                Jika Anda memiliki pertanyaan lebih lanjut atau membutuhkan bantuan terkait <br />Capture The Flag IFEST
-                #13, jangan ragu untuk menghubungi kami!!
+                Jika Anda memiliki pertanyaan lebih lanjut atau membutuhkan bantuan terkait <br />Capture The Flag IFEST #13, jangan ragu untuk menghubungi kami!!
             </h1>
         </div>
         <img src=" ./../img-ctf/element/Bintang.svg " class=" w-10 lg:w-20 " alt=" " />
@@ -1272,12 +1033,10 @@
     <div>
         <div class="absolute -left-16 ml-14 mt-4 lg:-mt-24
          scale-x-[-1]">
-            <img src="./../img-ctf/element/pelangi.svg" alt="awan" class="w-[200px] lg:w-[600px] opacity-80"
-                data-aos="flip-left" data-aos-duration="3000" />
+            <img src="./../img-ctf/element/pelangi.svg" alt="awan" class="w-[200px] lg:w-[600px] opacity-80" data-aos="flip-left" data-aos-duration="3000" />
         </div>
         <div class="absolute right-0 mt-24 lg:-mt-24">
-            <img src="./../img-ctf/element/pelangi.svg" alt="awan" class="w-[200px] lg:w-[600px] opacity-80"
-                data-aos="flip-right" data-aos-duration="3000" />
+            <img src="./../img-ctf/element/pelangi.svg" alt="awan" class="w-[200px] lg:w-[600px] opacity-80" data-aos="flip-right" data-aos-duration="3000" />
         </div>
     </div>
 </section>
@@ -1308,8 +1067,7 @@
                         </a>
                     </div>
                     <h1 class="font-inter mt-3 max-w-sm text-sm">
-                        The premier annual IT event hosted by HIMAFORKA UAJY. Brings together technology enthusiasts for
-                        a week of innovation, competition, and collaboration.
+                        The premier annual IT event hosted by HIMAFORKA UAJY. Brings together technology enthusiasts for a week of innovation, competition, and collaboration.
                     </h1>
                     <hr class="my-5" />
                     <div class="flex flex-col space-y-5">
@@ -1336,13 +1094,10 @@
                         <div class="flex flex-col space-y-3">
                             <h1 class="font-interBold text-xl">SOCIAL MEDIA</h1>
                             <div class="flex gap-2">
-                                <a href=""><img src="./../img-ctf/icon/mingcute_youtube-fill.svg" alt=""
-                                        class="w-10" /></a>
+                                <a href=""><img src="./../img-ctf/icon/mingcute_youtube-fill.svg" alt="" class="w-10" /></a>
 
-                                <a href="https://www.instagram.com/ifest_uajy/"><img
-                                        src="./../img-ctf/icon/mingcute_instagram-fill.svg" alt="" class="w-10" /></a>
-                                <a href=""><img src="./../img-ctf/icon/mingcute_line-app-fill.svg" alt=""
-                                        class="w-10" /></a>
+                                <a href="https://www.instagram.com/ifest_uajy/"><img src="./../img-ctf/icon/mingcute_instagram-fill.svg" alt="" class="w-10" /></a>
+                                <a href=""><img src="./../img-ctf/icon/mingcute_line-app-fill.svg" alt="" class="w-10" /></a>
                             </div>
                         </div>
                         <hr class="my-5" />
@@ -1391,8 +1146,7 @@
                         </div>
 
                         <h1 class="font-inter mt-5 w-96">
-                            The premier annual IT event hosted by HIMAFORKA UAJY. Brings together technology enthusiasts
-                            for a week of innovation, competition, and collaboration.
+                            The premier annual IT event hosted by HIMAFORKA UAJY. Brings together technology enthusiasts for a week of innovation, competition, and collaboration.
                         </h1>
                         <h1 class="font-interBold mt-8 text-xl">Presented By</h1>
                         <img src="./../img-ctf/element/logo_hima.svg" class="w-28 mt-5" alt="" />
@@ -1422,13 +1176,10 @@
                         <div class="flex flex-col">
                             <h1 class="font-interBold text-xl">SOCIAL MEDIA</h1>
                             <div class="flex gap-2 mt-3">
-                                <a href=""><img src="./../img-ctf/icon/mingcute_youtube-fill.svg" alt=""
-                                        class="w-10" /></a>
+                                <a href=""><img src="./../img-ctf/icon/mingcute_youtube-fill.svg" alt="" class="w-10" /></a>
 
-                                <a href="https://www.instagram.com/ifest_uajy/" target="_blank"><img
-                                        src="./../img-ctf/icon/mingcute_instagram-fill.svg" alt="" class="w-10" /></a>
-                                <a href=""><img src="./../img-ctf/icon/mingcute_line-app-fill.svg" alt=""
-                                        class="w-10" /></a>
+                                <a href="https://www.instagram.com/ifest_uajy/" target="_blank"><img src="./../img-ctf/icon/mingcute_instagram-fill.svg" alt="" class="w-10" /></a>
+                                <a href=""><img src="./../img-ctf/icon/mingcute_line-app-fill.svg" alt="" class="w-10" /></a>
                             </div>
                             <div class="mt-10">
                                 <h1 class="font-interBold text-xl">OUR CONTACTS</h1>
