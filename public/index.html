@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFEST</title>
+    <title>CTF - IFest #13</title>
     <link rel="stylesheet" href="css/style.css">
 
     <!-- AOS (Animation) -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <!-- Start - Slide 1 & Navbar -->
@@ -68,21 +68,21 @@
             </div>
             <ul id="kompetisi-dropdown-mobile" class="hidden space-y-2 ml-5">
                 <li>
-                    <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Mobile UI/UX Competition
+                    <a href="/muc" class="block text-black hover:bg-gray-200 p-2 rounded">Mobile UI/UX Competition
                         (MUC)</a>
                 </li>
                 <li>
-                    <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Web Development Competition
+                    <a href="/wdc" class="block text-black hover:bg-gray-200 p-2 rounded">Web Development Competition
                         (WDC)</a>
                 </li>
                 <li>
-                    <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Capture the Flag (CTF)</a>
+                    <a href="/ctf" class="block text-black hover:bg-gray-200 p-2 rounded">Capture the Flag (CTF)</a>
                 </li>
             </ul>
-            <a href="#semnas" class="block text-black hover:bg-gray-200 p-2 rounded">SEMINAR NASIONAL</a>
-            <a href="#store" class="block text-black hover:bg-gray-200 p-2 rounded">STORE</a>
-            <a href="#sponsorship" class="block text-black hover:bg-gray-200 p-2 rounded">SPONSOR</a>
-            <a href="#galeri" class="block text-black hover:bg-gray-200 p-2 rounded">GALERI</a>
+            <a href="/italk" class="block text-black hover:bg-gray-200 p-2 rounded">I-TALK</a>
+            <a href="/store" class="block text-black hover:bg-gray-200 p-2 rounded">STORE</a>
+            <a href="/sponsor" class="block text-black hover:bg-gray-200 p-2 rounded">SPONSOR</a>
+            <a href="/galeri" class="block text-black hover:bg-gray-200 p-2 rounded">GALERI</a>
         </div>
     </div>
     <!-- End - Mobile -->
@@ -110,18 +110,19 @@
                         </button>
                         <div id="kompetisi-dropdown-desktop"
                             class="absolute z-20 hidden bg-white shadow-lg rounded-md p-4 mt-2 left-0 w-64 border border-gray-300">
-                            <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Mobile UI/UX Competition
+                            <a href="/muc" class="block text-black hover:bg-gray-200 p-2 rounded">Mobile UI/UX
+                                Competition
                                 (MUC)</a>
-                            <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Web Development
+                            <a href="/wdc" class="block text-black hover:bg-gray-200 p-2 rounded">Web Development
                                 Competition (WDC)</a>
-                            <a href="#" class="block text-black hover:bg-gray-200 p-2 rounded">Capture the Flag
+                            <a href="/ctf" class="block text-black hover:bg-gray-200 p-2 rounded">Capture the Flag
                                 (CTF)</a>
                         </div>
                     </div>
-                    <a href="#semnas">SEMINAR NASIONAL</a>
-                    <a href="#store">STORE</a>
-                    <a href="#sponsorship">SPONSOR</a>
-                    <a href="#galeri">GALERI</a>
+                    <a href="/i-talk">I-TALK</a>
+                    <a href="/store">STORE</a>
+                    <a href="/sponsor">SPONSOR</a>
+                    <a href="/galeri">GALERI</a>
                 </div>
             </div>
         </div>
@@ -219,17 +220,47 @@
         secara offline.
 
     </h1>
+    <div class="flex justify-center items-center mx-5 lg:mx-10 -mt-52" data-aos="fade-down" data-aos-duration="2000">
+        <div>
+            <h1 class="text-white text-center font-jersey text-4xl lg:text-5xl mx-2 mt-3">
+                MATERI LOMBA CAPTURE THE FLAG
+            </h1>
+        </div>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 mt-12 px-3">
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h2 class="text-center font-jersey25 text-3xl text-[#2D678C] -mt-3">Kriptografi</h2>
+            <p class="text-gray-600 text-center">Ilmu yang mengamankan informasi dengan mengubah pesan agar tidak dapat
+                dibaca pihak yang tidak berwenang.
+            </p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h2 class="text-center font-jersey25 text-3xl text-[#2D678C] -mt-3">Forensik</h2>
+            <p class="text-gray-600 text-center">Menguji kemampuan peserta dalam menganalisis dan memecahkan masalah
+                forensik digital.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h2 class="text-center font-jersey25 text-3xl text-[#2D678C] -mt-3">Eksploitasi Web</h2>
+            <p class="text-gray-600 text-center">Identifikasi dan pemanfaatan celah keamanan web untuk menguji
+                keterampilan peserta dalam menemukan kerentanan.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h2 class="text-center font-jersey25 text-3xl text-[#2D678C] -mt-3">Reverse Engineering</h2>
+            <p class="text-gray-600 text-center">Mempelajari sistem dengan membongkar kode atau desainnya untuk memahami
+                mekanisme kerja dan menemukan potensi kerentanan.
+        </div>
+    </div>
 
-    <div>
-        <div class="absolute -left-16 -mt-48 lg:-mt-56 scale-x-[-1]" data-aos="fade-right" data-aos-duration="2000">
+    <div class="relative z-10">
+        <div class="absolute -left-16 mt-20 lg:mt-5 scale-x-[-1] z-[-1]" data-aos="fade-right" data-aos-duration="2000">
             <img src="./../img-ctf/element/Awan2.svg" alt="awan" class="w-[270px] lg:w-[600px]" />
         </div>
-        <div class="absolute right-0 -mt-60 lg:-mt-56 " data-aos="fade-right" data-aos-duration="2000">
+        <div class="absolute right-0 mt-20 lg:mt-5 z-[-1]" data-aos="fade-right" data-aos-duration="2000">
             <img src="./../img-ctf/element/Awan2.svg" alt="awan" class="w-[230px] lg:w-[500px]" />
         </div>
     </div>
     </div>
-    <div class="w-full flex justify-center gap-5 font-roboto -mt-20">
+    <div class="w-full flex justify-center gap-5 font-roboto py-10 relative z-50">
         <a href="https://bit.ly/Poster_CTF_2025">
             <div class="px-5 bg-[#F4347F] rounded-3xl h-10 grid place-items-center" data-aos="fade-right"
                 data-aos-duration="2000">
@@ -1197,7 +1228,7 @@
                         <div class="flex flex-col">
                             <h1 class="font-interBold text-xl">EVENTS</h1>
                             <div class="mt-5 hover:underline">
-                                <a href="/semnas" class="font-inter">Seminar nasional</a>
+                                <a href="/i-talk" class="font-inter">I-TALK</a>
                             </div>
                         </div>
                         <hr class="my-5" />
@@ -1217,13 +1248,13 @@
                         <div class="flex flex-col space-y-3">
                             <h1 class="font-interBold text-xl">SOCIAL MEDIA</h1>
                             <div class="flex gap-2">
-                                <a href=""><img src="./../img-ctf/icon/mingcute_youtube-fill.svg" alt=""
-                                        class="w-10" /></a>
+                                <a href="https://www.youtube.com/@ifestuajy"><img
+                                        src="./../img-ctf/icon/mingcute_youtube-fill.svg" alt="" class="w-10" /></a>
 
                                 <a href="https://www.instagram.com/ifest_uajy/"><img
                                         src="./../img-ctf/icon/mingcute_instagram-fill.svg" alt="" class="w-10" /></a>
-                                <a href=""><img src="./../img-ctf/icon/mingcute_line-app-fill.svg" alt=""
-                                        class="w-10" /></a>
+                                <a href="https://line.me/ti/p/~@ykb1847q"><img
+                                        src="./../img-ctf/icon/mingcute_line-app-fill.svg" alt="" class="w-10" /></a>
                             </div>
                         </div>
                         <hr class="my-5" />
@@ -1281,7 +1312,7 @@
                     <div class="mx-auto text-white">
                         <h1 class="font-interBold text-xl">EVENTS</h1>
                         <div class="mt-5 hover:underline">
-                            <a href="/semnas" class="font-inter">Seminar nasional</a>
+                            <a href="/i-talk" class="font-inter">I-TALK</a>
                         </div>
                     </div>
                     <div class="mx-auto text-white">
@@ -1303,13 +1334,13 @@
                         <div class="flex flex-col">
                             <h1 class="font-interBold text-xl">SOCIAL MEDIA</h1>
                             <div class="flex gap-2 mt-3">
-                                <a href=""><img src="./../img-ctf/icon/mingcute_youtube-fill.svg" alt=""
-                                        class="w-10" /></a>
+                                <a href="https://www.youtube.com/@ifestuajy"><img
+                                        src="./../img-ctf/icon/mingcute_youtube-fill.svg" alt="" class="w-10" /></a>
 
                                 <a href="https://www.instagram.com/ifest_uajy/" target="_blank"><img
                                         src="./../img-ctf/icon/mingcute_instagram-fill.svg" alt="" class="w-10" /></a>
-                                <a href=""><img src="./../img-ctf/icon/mingcute_line-app-fill.svg" alt=""
-                                        class="w-10" /></a>
+                                <a href="https://line.me/ti/p/~@ykb1847q"><img
+                                        src="./../img-ctf/icon/mingcute_line-app-fill.svg" alt="" class="w-10" /></a>
                             </div>
                             <div class="mt-10">
                                 <h1 class="font-interBold text-xl">OUR CONTACTS</h1>
